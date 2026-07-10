@@ -18,8 +18,8 @@ if (contactForm) {
             `---\n` +
             `Ce message a été généré par le site vitrine NUMETIC.`
         );
-        const mailtoUrl = `mailto:jerfog2@hotmail.com?subject=${subject}&body=${body}`;
+        const mailtoUrl = `mailto:numetic.liege@gmail.com?subject=${subject}&body=${body}`;
         window.location.href = mailtoUrl;
-        alert("Votre application de messagerie va s'ouvrir pour envoyer le message de demande d'audit à Jérôme (jerfog2@hotmail.com). Merci !");
+        alert("Votre application de messagerie va s'ouvrir pour envoyer le message de demande d'audit à Jérôme (numetic.liege@gmail.com). Merci !");
     });
 }

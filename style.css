@@ -371,6 +371,24 @@ body {
 .footer-container a:hover {
     text-decoration: underline;
 }
+.footer-contact {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+.footer-contact a {
+    color: var(--cyan-glow);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-contact a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+.footer-contact .separator {
+    color: var(--cyan);
+    margin: 0 10px;
+}
 @media (max-width: 960px) {
     .hero-container, .about-container {
         grid-template-columns: 1fr;
@@ -446,5 +464,13 @@ body {
     /* Cartes de services plus compactes */
     .service-card {
         padding: 30px 20px;
+    }
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .footer-contact .separator {
+        display: none;
     }
 }
