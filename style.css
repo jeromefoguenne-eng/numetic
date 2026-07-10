@@ -399,6 +399,28 @@ body {
 }
 
 @media (max-width: 640px) {
+    /* En-tête empilé pour smartphone */
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    .logo {
+        justify-content: center;
+    }
+    #main-nav {
+        justify-content: center;
+        width: 100%;
+    }
+    .btn-header {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #hero {
+        padding: 135px 0 40px 0; /* Dégage le header empilé plus haut */
+    }
     .hero-content h1 {
         font-size: 32px; /* Taille optimale pour éviter les coupures de mots */
         line-height: 1.3;
