@@ -389,6 +389,28 @@ body {
     color: var(--cyan);
     margin: 0 10px;
 }
+.footer-social {
+    margin: 10px 0;
+}
+.social-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cyan-glow);
+    text-decoration: none;
+    padding: 6px 16px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    background-color: rgba(0, 240, 255, 0.03);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.social-link:hover {
+    border-color: var(--cyan);
+    background-color: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    color: var(--white);
+    transform: translateY(-1px);
+}
 @media (max-width: 960px) {
     .hero-container, .about-container {
         grid-template-columns: 1fr;
