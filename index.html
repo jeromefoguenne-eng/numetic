@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261114c">
+    <link rel="stylesheet" href="style.css?v=20261114e">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
@@ -111,24 +111,25 @@
                 <div class="glass-widget" data-mouse-parallax="14">
                     <div class="widget-header">
                         <span class="widget-title">Exemple de flux automatisé</span>
-                        <span class="widget-status">● Actif en No-Code</span>
+                        <span class="widget-status"><span class="status-dot" aria-hidden="true"></span>Actif en No-Code</span>
                     </div>
-                    <div class="workflow-row">
-                        <div class="node-box">
+                    <div class="workflow-row" id="hero-workflow">
+                        <div class="node-box is-active" data-step="0" data-label="1. Réception de la demande client...">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                             <span>E-mail client</span>
                         </div>
-                        <div class="node-arrow" aria-hidden="true">→</div>
-                        <div class="node-box node-highlight">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
+                        <div class="flow-connector is-active" data-conn="0" aria-hidden="true"><span class="flow-pulse"></span></div>
+                        <div class="node-box node-highlight" data-step="1" data-label="2. Analyse IA &amp; extraction des besoins...">
+                            <svg class="spin-soft" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
                             <span>Analyse IA</span>
                         </div>
-                        <div class="node-arrow" aria-hidden="true">→</div>
-                        <div class="node-box">
+                        <div class="flow-connector" data-conn="1" aria-hidden="true"><span class="flow-pulse"></span></div>
+                        <div class="node-box node-done" data-step="2" data-label="3. Devis généré &amp; CRM mis à jour ✓">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                             <span>Devis &amp; CRM</span>
                         </div>
                     </div>
+                    <div class="workflow-live-bar" id="workflow-live-label">1. Réception de la demande client...</div>
                     <div class="metric-strip">
                         <div><strong>+12h</strong><span>gagnées / semaine</span></div>
                         <div><strong>0 ligne</strong><span>de code complexe</span></div>
@@ -266,12 +267,12 @@
                 <div class="about-panel glass-panel">
                     <div class="about-content">
                         <h2>Présentation</h2>
-                        <p><strong>Jérôme Foguenne</strong> est coordinateur technopédagogue à Liège, formateur agréé pour l'enseignement et conférencier international (Montréal Connect, ULiège). Spécialiste de la formation aux usages de l'IA et de l'intégration numérique, il fonde <strong>NUMETIC</strong> pour mettre les technologies no-code au service de l'efficacité opérationnelle des PME.</p>
+                        <p><strong>Jérôme Foguenne</strong> est technopédagogue à Liège et formateur agréé pour l'enseignement. Il a mené de nombreuses recherches dans le domaine du numérique, du jeu vidéo et de l'intelligence artificielle. Spécialiste de la formation aux usages de l'IA et de l'intégration numérique, il fonde <strong>NUMETIC</strong> pour mettre les technologies no-code au service de l'efficacité opérationnelle des PME.</p>
                         <p>Sa méthode allie rigueur d'ingénierie pédagogique et simplicité d'outils visuels modernes pour assurer une transition numérique sereine et rentable.</p>
                         <div class="about-tags">
                             <span class="tag-pill">Liège &amp; Wallonie</span>
                             <span class="tag-pill">Formateur agréé</span>
-                            <span class="tag-pill">Conférencier ULiège &amp; Montréal Connect</span>
+                            <span class="tag-pill">Recherche Numérique, Jeu Vidéo &amp; IA</span>
                         </div>
                     </div>
                     <div class="about-visual">
@@ -365,6 +366,6 @@
         </div>
     </footer>
 
-    <script src="app.js?v=20261114c"></script>
+    <script src="app.js?v=20261114e"></script>
 </body>
 </html>

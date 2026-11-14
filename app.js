@@ -40,7 +40,7 @@ const parcoursModes = {
     formation: {
         tag: "Parcours Équipes • Pédagogie pratique",
         title: "Rendez vos collaborateurs autonomes sur l'IA générative utile.",
-        desc: "Des ateliers concrets adaptés à votre secteur (prompting, LLM, synthèse, création de contenu) animés par un formateur agréé et conférencier international.",
+        desc: "Des ateliers concrets adaptés à votre secteur (prompting, LLM, synthèse, création de contenu) animés par un formateur agréé, technopédagogue et chercheur en numérique et IA.",
         cta: "Planifier une formation sur-mesure",
         items: [
             "<strong>1. Programme adapté :</strong> cas d'usage réels issus de votre métier.",
@@ -148,4 +148,71 @@ if (contactForm && feedbackBox) {
             submitBtn.disabled = false;
         }
     });
+}
+
+// 6. Animation générative en boucle du flux automatisé dans le Hero
+const workflowNodes = document.querySelectorAll('#hero-workflow .node-box');
+const workflowConns = document.querySelectorAll('#hero-workflow .flow-connector');
+const workflowLabel = document.getElementById('workflow-live-label');
+
+if (workflowNodes.length === 3 && workflowLabel) {
+    let loopTimer = null;
+
+    const renderWorkflowStage = (stage) => {
+        // stage 0: Node 0 généré + actif
+        // stage 1: Conn 0 envoi données -> Node 1 généré + actif
+        // stage 2: Conn 1 envoi données -> Node 2 généré + actif (flux complet)
+        workflowNodes.forEach((node, idx) => {
+            node.classList.toggle('is-generated', idx <= stage);
+            node.classList.toggle('is-active', idx === stage);
+        });
+        workflowConns.forEach((conn, idx) => {
+            conn.classList.toggle('is-visible', idx < stage);
+            conn.classList.toggle('is-active', idx === stage - 1 || (stage === 2 && idx === 1));
+        });
+        const label = workflowNodes[stage].dataset.label;
+        if (label) workflowLabel.textContent = label;
+    };
+
+    const runWorkflowCycle = () => {
+        // Réinitialise brièvement avant de régénérer la boucle
+        workflowNodes.forEach((n) => n.classList.remove('is-generated', 'is-active'));
+        workflowConns.forEach((c) => c.classList.remove('is-visible', 'is-active'));
+        workflowLabel.textContent = "Initialisation d'un nouveau flux...";
+
+        setTimeout(() => renderWorkflowStage(0), 320);
+        setTimeout(() => {
+            workflowConns[0].classList.add('is-visible', 'is-active');
+        }, 1250);
+        setTimeout(() => renderWorkflowStage(1), 1750);
+        setTimeout(() => {
+            workflowConns[1].classList.add('is-visible', 'is-active');
+        }, 2950);
+        setTimeout(() => renderWorkflowStage(2), 3450);
+    };
+
+    workflowNodes.forEach((node, idx) => {
+        node.addEventListener('click', () => {
+            if (loopTimer) clearInterval(loopTimer);
+            renderWorkflowStage(idx);
+            if (!prefersReduced) {
+                loopTimer = setInterval(runWorkflowCycle, 5800);
+            }
+        });
+    });
+
+    if (prefersReduced) {
+        renderWorkflowStage(2);
+    } else {
+        renderWorkflowStage(0);
+        setTimeout(() => {
+            workflowConns[0].classList.add('is-visible', 'is-active');
+        }, 1000);
+        setTimeout(() => renderWorkflowStage(1), 1500);
+        setTimeout(() => {
+            workflowConns[1].classList.add('is-visible', 'is-active');
+        }, 2600);
+        setTimeout(() => renderWorkflowStage(2), 3100);
+        loopTimer = setInterval(runWorkflowCycle, 5800);
+    }
 }
