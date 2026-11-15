@@ -150,82 +150,175 @@ if (contactForm && feedbackBox) {
     });
 }
 
-// 6. Animation générative en boucle du flux automatisé dans le Hero
-const workflowNodes = document.querySelectorAll('#hero-workflow .node-box');
-const workflowConns = document.querySelectorAll('#hero-workflow .flow-connector');
-const workflowBar = document.getElementById('workflow-live-bar');
-const workflowLabel = document.getElementById('workflow-live-label');
-const workflowProgress = document.getElementById('workflow-progress');
+// 6. Synchronisation du cycle BD 2 Temps (24s : Temps 1 Sans IA -> Temps 2 Avec NUMETIC +6.0h/sem)
+const cinemaStage = document.getElementById('cinema-stage');
+const cycleBadge = document.getElementById('cycle-phase-badge');
+const cycleFill = document.getElementById('cycle-track-fill');
+const gainPill = document.getElementById('cinema-gain-pill');
+const metricHours = document.getElementById('cinema-metric-hours');
+const skyDawn = document.getElementById('sky-dawn');
+const skyDay = document.getElementById('sky-day');
+const skyDusk = document.getElementById('sky-dusk');
+const starsLayer = document.getElementById('stars-layer');
+const sunOrb = document.getElementById('sun-orb');
+const moonOrb = document.getElementById('moon-orb');
+const bdWalker = document.getElementById('bd-walker');
+const lampHalos = document.querySelectorAll('.night-lamp-halo');
 
-if (workflowNodes.length === 3 && workflowLabel && workflowBar) {
-    let loopTimer = null;
+if (cinemaStage && cycleBadge && cycleFill) {
+    const TOTAL_MS = 24000;
+    const HALF_MS = 12000;
+    const startTime = performance.now();
+    const STAGES = [
+        'stage-t1-office', 'stage-t1-commute', 'stage-t1-homework',
+        'stage-t2-office', 'stage-t2-commute', 'stage-t2-family', 'stage-t2-sofa'
+    ];
 
-    const renderWorkflowStage = (stage) => {
-        workflowNodes.forEach((node, idx) => {
-            node.classList.toggle('is-generated', idx <= stage);
-            node.classList.toggle('is-active', idx === stage);
-        });
-        workflowConns.forEach((conn, idx) => {
-            conn.classList.toggle('is-visible', idx < stage);
-            conn.classList.toggle('is-active', idx === stage - 1 || (stage === 2 && idx === 1));
-        });
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
+    const tri = (t, a, b, c, d) => {
+        if (t <= a || t >= d) return 0;
+        if (t < b) return (t - a) / (b - a);
+        if (t <= c) return 1;
+        return (d - t) / (d - c);
+    };
 
-        const activeNode = workflowNodes[stage];
-        const theme = activeNode.dataset.theme || 'blue';
-        workflowBar.classList.remove('theme-blue', 'theme-violet', 'theme-emerald');
-        workflowBar.classList.add(`theme-${theme}`);
-        if (workflowProgress) {
-            workflowProgress.style.width = `${Math.round(((stage + 1) / 3) * 100)}%`;
+    const setSkyState = (localSec, isPhase2) => {
+        // Temps 1 : jour (0..4.4s) -> crépuscule (4.4..6.0s) -> nuit noire (6.0..12.0s)
+        // Temps 2 : aube->jour (0..4.5s) -> plein jour trajet (4.5..7.2s) -> fin d'aprem dorée (7.2..9.6s) -> soirée/nuit cosy (9.6..12.0s)
+        let dawn = 0, day = 0, dusk = 0, night = 0, sunProg = -1, moonProg = -1;
+
+        if (!isPhase2) {
+            dawn = tri(localSec, 0, 0.4, 0.9, 1.8);
+            day = tri(localSec, 0.5, 1.4, 4.0, 5.2);
+            dusk = tri(localSec, 4.0, 4.9, 5.6, 6.6);
+            night = clamp01((localSec - 5.2) / 1.2);
+            if (localSec < 5.6) sunProg = localSec / 5.6;
+            if (localSec >= 5.4) moonProg = (localSec - 5.4) / 6.6;
+        } else {
+            dawn = tri(localSec, 0, 0.4, 0.9, 1.8);
+            day = tri(localSec, 0.5, 1.3, 6.9, 8.2);
+            dusk = tri(localSec, 6.9, 7.9, 9.2, 10.4);
+            night = clamp01((localSec - 9.2) / 1.2);
+            if (localSec < 8.6) sunProg = localSec / 8.6;
+            if (localSec >= 9.0) moonProg = (localSec - 9.0) / 3.0;
         }
-        const label = activeNode.dataset.label;
-        if (label) workflowLabel.textContent = label;
-    };
 
-    const runWorkflowCycle = () => {
-        workflowNodes.forEach((n) => n.classList.remove('is-generated', 'is-active'));
-        workflowConns.forEach((c) => c.classList.remove('is-visible', 'is-active'));
-        workflowBar.classList.remove('theme-violet', 'theme-emerald');
-        workflowBar.classList.add('theme-blue');
-        if (workflowProgress) workflowProgress.style.width = '10%';
-        workflowLabel.textContent = "Nouveau flux entrant détecté...";
+        if (skyDawn) skyDawn.setAttribute('opacity', dawn.toFixed(2));
+        if (skyDay) skyDay.setAttribute('opacity', day.toFixed(2));
+        if (skyDusk) skyDusk.setAttribute('opacity', dusk.toFixed(2));
+        if (starsLayer) starsLayer.setAttribute('opacity', (night * 0.95).toFixed(2));
+        lampHalos.forEach((el) => el.setAttribute('opacity', clamp01(night + dusk * 0.35).toFixed(2)));
 
-        setTimeout(() => renderWorkflowStage(0), 320);
-        setTimeout(() => {
-            workflowConns[0].classList.add('is-visible', 'is-active');
-            if (workflowProgress) workflowProgress.style.width = '50%';
-        }, 1250);
-        setTimeout(() => renderWorkflowStage(1), 1900);
-        setTimeout(() => {
-            workflowConns[1].classList.add('is-visible', 'is-active');
-            if (workflowProgress) workflowProgress.style.width = '85%';
-        }, 3100);
-        setTimeout(() => renderWorkflowStage(2), 3750);
-    };
+        // Synchronise la luminosité de tout l'arrière-plan du site avec le cycle Jour / Nuit
+        const rootStyle = document.documentElement.style;
+        rootStyle.setProperty('--sky-day', clamp01(day + dawn * 0.45).toFixed(3));
+        rootStyle.setProperty('--sky-dusk', clamp01(dusk + dawn * 0.55).toFixed(3));
+        rootStyle.setProperty('--sky-night', night.toFixed(3));
 
-    workflowNodes.forEach((node, idx) => {
-        node.addEventListener('click', () => {
-            if (loopTimer) clearInterval(loopTimer);
-            renderWorkflowStage(idx);
-            if (!prefersReduced) {
-                loopTimer = setInterval(runWorkflowCycle, 6200);
+        if (sunOrb) {
+            if (sunProg >= 0 && sunProg <= 1) {
+                const angle = (-70 + sunProg * 140) * (Math.PI / 180);
+                const x = Math.sin(angle) * 260;
+                const y = 260 - Math.cos(angle) * 260;
+                sunOrb.setAttribute('opacity', clamp01(Math.sin(sunProg * Math.PI) * 1.35).toFixed(2));
+                sunOrb.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+            } else {
+                sunOrb.setAttribute('opacity', '0');
             }
-        });
-    });
+        }
+        if (moonOrb) {
+            if (moonProg >= 0 && moonProg <= 1) {
+                const angle = (-58 + moonProg * 116) * (Math.PI / 180);
+                const x = Math.sin(angle) * 230;
+                const y = 240 - Math.cos(angle) * 240;
+                moonOrb.setAttribute('opacity', clamp01(Math.sin(moonProg * Math.PI) * 1.5).toFixed(2));
+                moonOrb.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+            } else {
+                moonOrb.setAttribute('opacity', '0');
+            }
+        }
+    };
 
-    if (prefersReduced) {
-        renderWorkflowStage(2);
+    const updateTwoPhaseCycle = () => {
+        const elapsed = (performance.now() - startTime) % TOTAL_MS;
+        const pct = (elapsed / TOTAL_MS) * 100;
+        const isPhase2 = elapsed >= HALF_MS;
+        const localSec = (elapsed % HALF_MS) / 1000;
+
+        cinemaStage.classList.toggle('phase-1', !isPhase2);
+        cinemaStage.classList.toggle('phase-2', isPhase2);
+        cycleFill.style.width = `${Math.max(4, Math.round(pct))}%`;
+
+        let activeStage = 'stage-t1-office';
+        let walkX = 290;
+        let showWalker = false;
+        let hoursGained = 0;
+
+        if (!isPhase2) {
+            if (localSec < 4.5) {
+                activeStage = 'stage-t1-office';
+                cycleBadge.textContent = "⏳ Temps 1/2 • Sans IA : travaille non-stop sur son PC";
+            } else if (localSec < 8.2) {
+                activeStage = 'stage-t1-commute';
+                showWalker = true;
+                const walkProg = clamp01((localSec - 4.5) / 3.7);
+                walkX = 290 + walkProg * 365;
+                cycleBadge.textContent = "🌙 Temps 1/2 • Sans IA : rentre chez lui tard dans le noir";
+            } else {
+                activeStage = 'stage-t1-homework';
+                cycleBadge.textContent = "💻 Temps 1/2 • Sans IA : continue à trier ses mails à 23h30";
+            }
+            if (gainPill) gainPill.textContent = "⏳ +0.0h gagnées / semaine (Sans IA)";
+            if (metricHours) metricHours.textContent = "+0h";
+        } else {
+            if (localSec < 4.5) {
+                activeStage = 'stage-t2-office';
+                hoursGained = clamp01(localSec / 4.2) * 6.0;
+                cycleBadge.textContent = "⚡ Temps 2/2 • Avec NUMETIC : l'IA code, il échange avec ses clients";
+            } else if (localSec < 7.2) {
+                activeStage = 'stage-t2-commute';
+                showWalker = true;
+                hoursGained = 6.0;
+                const walkProg = clamp01((localSec - 4.5) / 2.7);
+                walkX = 290 + walkProg * 365;
+                cycleBadge.textContent = "☀️ Temps 2/2 • Avec NUMETIC : rentre chez lui alors qu'il fait encore clair !";
+            } else if (localSec < 9.6) {
+                activeStage = 'stage-t2-family';
+                hoursGained = 6.0;
+                cycleBadge.textContent = "👨‍👩‍👦 Temps 2/2 • Avec NUMETIC : profite de sa famille";
+            } else {
+                activeStage = 'stage-t2-sofa';
+                hoursGained = 6.0;
+                cycleBadge.textContent = "🛋️ Temps 2/2 • Soirée paisible sur son canapé";
+            }
+            const formattedHours = `+${hoursGained.toFixed(1)}h`;
+            if (gainPill) {
+                gainPill.textContent = hoursGained >= 5.95
+                    ? "🚀 +6.0h gagnées / semaine avec NUMETIC"
+                    : `⚡ ${formattedHours} gagnées / semaine...`;
+            }
+            if (metricHours) metricHours.textContent = hoursGained >= 5.95 ? "+6h" : formattedHours;
+        }
+
+        STAGES.forEach((cls) => cinemaStage.classList.toggle(cls, cls === activeStage));
+        if (bdWalker) {
+            bdWalker.setAttribute('opacity', showWalker ? '1' : '0');
+            bdWalker.setAttribute('transform', `translate(${walkX.toFixed(1)} 0)`);
+        }
+        setSkyState(localSec, isPhase2);
+    };
+
+    updateTwoPhaseCycle();
+    if (!prefersReduced) {
+        const loop = () => {
+            updateTwoPhaseCycle();
+            requestAnimationFrame(loop);
+        };
+        requestAnimationFrame(loop);
     } else {
-        renderWorkflowStage(0);
-        setTimeout(() => {
-            workflowConns[0].classList.add('is-visible', 'is-active');
-            if (workflowProgress) workflowProgress.style.width = '50%';
-        }, 1050);
-        setTimeout(() => renderWorkflowStage(1), 1650);
-        setTimeout(() => {
-            workflowConns[1].classList.add('is-visible', 'is-active');
-            if (workflowProgress) workflowProgress.style.width = '85%';
-        }, 2850);
-        setTimeout(() => renderWorkflowStage(2), 3500);
-        loopTimer = setInterval(runWorkflowCycle, 6200);
+        cinemaStage.classList.remove('phase-1', ...STAGES);
+        cinemaStage.classList.add('phase-2', 'stage-t2-family');
+        cycleBadge.textContent = "🚀 Avec NUMETIC • +6.0h gagnées / semaine";
+        if (gainPill) gainPill.textContent = "🚀 +6.0h gagnées / semaine avec NUMETIC";
     }
 }
