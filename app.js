@@ -153,15 +153,14 @@ if (contactForm && feedbackBox) {
 // 6. Animation générative en boucle du flux automatisé dans le Hero
 const workflowNodes = document.querySelectorAll('#hero-workflow .node-box');
 const workflowConns = document.querySelectorAll('#hero-workflow .flow-connector');
+const workflowBar = document.getElementById('workflow-live-bar');
 const workflowLabel = document.getElementById('workflow-live-label');
+const workflowProgress = document.getElementById('workflow-progress');
 
-if (workflowNodes.length === 3 && workflowLabel) {
+if (workflowNodes.length === 3 && workflowLabel && workflowBar) {
     let loopTimer = null;
 
     const renderWorkflowStage = (stage) => {
-        // stage 0: Node 0 généré + actif
-        // stage 1: Conn 0 envoi données -> Node 1 généré + actif
-        // stage 2: Conn 1 envoi données -> Node 2 généré + actif (flux complet)
         workflowNodes.forEach((node, idx) => {
             node.classList.toggle('is-generated', idx <= stage);
             node.classList.toggle('is-active', idx === stage);
@@ -170,25 +169,37 @@ if (workflowNodes.length === 3 && workflowLabel) {
             conn.classList.toggle('is-visible', idx < stage);
             conn.classList.toggle('is-active', idx === stage - 1 || (stage === 2 && idx === 1));
         });
-        const label = workflowNodes[stage].dataset.label;
+
+        const activeNode = workflowNodes[stage];
+        const theme = activeNode.dataset.theme || 'blue';
+        workflowBar.classList.remove('theme-blue', 'theme-violet', 'theme-emerald');
+        workflowBar.classList.add(`theme-${theme}`);
+        if (workflowProgress) {
+            workflowProgress.style.width = `${Math.round(((stage + 1) / 3) * 100)}%`;
+        }
+        const label = activeNode.dataset.label;
         if (label) workflowLabel.textContent = label;
     };
 
     const runWorkflowCycle = () => {
-        // Réinitialise brièvement avant de régénérer la boucle
         workflowNodes.forEach((n) => n.classList.remove('is-generated', 'is-active'));
         workflowConns.forEach((c) => c.classList.remove('is-visible', 'is-active'));
-        workflowLabel.textContent = "Initialisation d'un nouveau flux...";
+        workflowBar.classList.remove('theme-violet', 'theme-emerald');
+        workflowBar.classList.add('theme-blue');
+        if (workflowProgress) workflowProgress.style.width = '10%';
+        workflowLabel.textContent = "Nouveau flux entrant détecté...";
 
         setTimeout(() => renderWorkflowStage(0), 320);
         setTimeout(() => {
             workflowConns[0].classList.add('is-visible', 'is-active');
+            if (workflowProgress) workflowProgress.style.width = '50%';
         }, 1250);
-        setTimeout(() => renderWorkflowStage(1), 1750);
+        setTimeout(() => renderWorkflowStage(1), 1900);
         setTimeout(() => {
             workflowConns[1].classList.add('is-visible', 'is-active');
-        }, 2950);
-        setTimeout(() => renderWorkflowStage(2), 3450);
+            if (workflowProgress) workflowProgress.style.width = '85%';
+        }, 3100);
+        setTimeout(() => renderWorkflowStage(2), 3750);
     };
 
     workflowNodes.forEach((node, idx) => {
@@ -196,7 +207,7 @@ if (workflowNodes.length === 3 && workflowLabel) {
             if (loopTimer) clearInterval(loopTimer);
             renderWorkflowStage(idx);
             if (!prefersReduced) {
-                loopTimer = setInterval(runWorkflowCycle, 5800);
+                loopTimer = setInterval(runWorkflowCycle, 6200);
             }
         });
     });
@@ -207,12 +218,14 @@ if (workflowNodes.length === 3 && workflowLabel) {
         renderWorkflowStage(0);
         setTimeout(() => {
             workflowConns[0].classList.add('is-visible', 'is-active');
-        }, 1000);
-        setTimeout(() => renderWorkflowStage(1), 1500);
+            if (workflowProgress) workflowProgress.style.width = '50%';
+        }, 1050);
+        setTimeout(() => renderWorkflowStage(1), 1650);
         setTimeout(() => {
             workflowConns[1].classList.add('is-visible', 'is-active');
-        }, 2600);
-        setTimeout(() => renderWorkflowStage(2), 3100);
-        loopTimer = setInterval(runWorkflowCycle, 5800);
+            if (workflowProgress) workflowProgress.style.width = '85%';
+        }, 2850);
+        setTimeout(() => renderWorkflowStage(2), 3500);
+        loopTimer = setInterval(runWorkflowCycle, 6200);
     }
 }
