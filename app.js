@@ -165,7 +165,7 @@ const moonOrb = document.getElementById('moon-orb');
 const bdWalker = document.getElementById('bd-walker');
 const lampHalos = document.querySelectorAll('.night-lamp-halo');
 
-if (cinemaStage && cycleBadge && cycleFill) {
+if (cinemaStage) {
     const TOTAL_MS = 24000;
     const HALF_MS = 12000;
     const startTime = performance.now();
@@ -247,7 +247,7 @@ if (cinemaStage && cycleBadge && cycleFill) {
 
         cinemaStage.classList.toggle('phase-1', !isPhase2);
         cinemaStage.classList.toggle('phase-2', isPhase2);
-        cycleFill.style.width = `${Math.max(4, Math.round(pct))}%`;
+        if (cycleFill) cycleFill.style.width = `${Math.max(4, Math.round(pct))}%`;
 
         let activeStage = 'stage-t1-office';
         let walkX = 290;
@@ -257,16 +257,16 @@ if (cinemaStage && cycleBadge && cycleFill) {
         if (!isPhase2) {
             if (localSec < 4.5) {
                 activeStage = 'stage-t1-office';
-                cycleBadge.textContent = "⏳ Temps 1/2 • Sans IA : travaille non-stop sur son PC";
+                if (cycleBadge) cycleBadge.textContent = "⏳ Temps 1/2 • Sans IA : travaille non-stop sur son PC";
             } else if (localSec < 8.2) {
                 activeStage = 'stage-t1-commute';
                 showWalker = true;
                 const walkProg = clamp01((localSec - 4.5) / 3.7);
                 walkX = 290 + walkProg * 365;
-                cycleBadge.textContent = "🌙 Temps 1/2 • Sans IA : rentre chez lui tard dans le noir";
+                if (cycleBadge) cycleBadge.textContent = "🌙 Temps 1/2 • Sans IA : rentre chez lui tard dans le noir";
             } else {
                 activeStage = 'stage-t1-homework';
-                cycleBadge.textContent = "💻 Temps 1/2 • Sans IA : continue à trier ses mails à 23h30";
+                if (cycleBadge) cycleBadge.textContent = "💻 Temps 1/2 • Sans IA : continue à trier ses mails à 23h30";
             }
             if (gainPill) gainPill.textContent = "⏳ +0.0h gagnées / semaine (Sans IA)";
             if (metricHours) metricHours.textContent = "+0h";
@@ -274,22 +274,22 @@ if (cinemaStage && cycleBadge && cycleFill) {
             if (localSec < 4.5) {
                 activeStage = 'stage-t2-office';
                 hoursGained = clamp01(localSec / 4.2) * 6.0;
-                cycleBadge.textContent = "⚡ Temps 2/2 • Avec NUMETIC : l'IA code, il échange avec ses clients";
+                if (cycleBadge) cycleBadge.textContent = "⚡ Temps 2/2 • Avec NUMETIC : l'IA code, il échange avec ses clients";
             } else if (localSec < 7.2) {
                 activeStage = 'stage-t2-commute';
                 showWalker = true;
                 hoursGained = 6.0;
                 const walkProg = clamp01((localSec - 4.5) / 2.7);
                 walkX = 290 + walkProg * 365;
-                cycleBadge.textContent = "☀️ Temps 2/2 • Avec NUMETIC : rentre chez lui alors qu'il fait encore clair !";
+                if (cycleBadge) cycleBadge.textContent = "☀️ Temps 2/2 • Avec NUMETIC : rentre chez lui alors qu'il fait encore clair !";
             } else if (localSec < 9.6) {
                 activeStage = 'stage-t2-family';
                 hoursGained = 6.0;
-                cycleBadge.textContent = "👨‍👩‍👦 Temps 2/2 • Avec NUMETIC : profite de sa famille";
+                if (cycleBadge) cycleBadge.textContent = "👨‍👩‍👦 Temps 2/2 • Avec NUMETIC : profite de sa famille";
             } else {
                 activeStage = 'stage-t2-sofa';
                 hoursGained = 6.0;
-                cycleBadge.textContent = "🛋️ Temps 2/2 • Soirée paisible sur son canapé";
+                if (cycleBadge) cycleBadge.textContent = "🛋️ Temps 2/2 • Soirée paisible sur son canapé";
             }
             const formattedHours = `+${hoursGained.toFixed(1)}h`;
             if (gainPill) {
