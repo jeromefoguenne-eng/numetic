@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261115a">
+    <link rel="stylesheet" href="style.css?v=20261115b">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
@@ -92,8 +92,8 @@
     <main>
         <!-- HERO SECTION -->
         <section id="hero" class="hero-section">
-            <div class="container hero-grid">
-                <div class="hero-copy">
+            <div class="container">
+                <div class="hero-copy hero-copy-centered">
                     <h1>Libérez le temps de vos équipes grâce à l'IA et au No-Code.</h1>
                     <p class="hero-subtitle">
                         Automatisations sur-mesure, formations pratiques et audits énergétiques de l'IA — sans aucune compétence technique requise.
@@ -107,49 +107,239 @@
                     </div>
                 </div>
 
-                <!-- Widget visuel interactif (Proof of Capability) -->
-                <div class="glass-widget" data-mouse-parallax="14">
-                    <div class="widget-header">
-                        <span class="widget-title">Exemple de flux automatisé</span>
-                        <span class="widget-status"><span class="status-dot" aria-hidden="true"></span>Actif en No-Code</span>
-                    </div>
-                    <div class="workflow-row" id="hero-workflow">
-                        <div class="node-box node-mail is-generated is-active" data-step="0" data-theme="blue" data-label="1. Nouveau dossier &amp; e-mail client reçus...">
-                            <span class="node-badge">Entrée</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            <span>E-mail client</span>
+                <!-- Animation panoramique centrée sous le titre (Cycle jour/nuit + Train IA 24/7) -->
+                <div class="cinema-stage glass-panel" data-mouse-parallax="8">
+                    <svg class="cinema-svg" viewBox="0 0 960 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animation continue du flux IA NUMETIC avec cycle jour et nuit">
+                        <defs>
+                            <!-- 4 ciels en fondu croisé pour des transitions jour/nuit fluides -->
+                            <linearGradient id="skyDawnGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#1E1B4B"/>
+                                <stop offset="55%" stop-color="#4338CA" stop-opacity="0.7"/>
+                                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.45"/>
+                            </linearGradient>
+                            <linearGradient id="skyDayGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#0F2A5E"/>
+                                <stop offset="55%" stop-color="#1D4ED8" stop-opacity="0.72"/>
+                                <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.35"/>
+                            </linearGradient>
+                            <linearGradient id="skyDuskGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#1E1B4B"/>
+                                <stop offset="55%" stop-color="#6D28D9" stop-opacity="0.65"/>
+                                <stop offset="100%" stop-color="#EA580C" stop-opacity="0.42"/>
+                            </linearGradient>
+                            <linearGradient id="skyNightGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#040711"/>
+                                <stop offset="65%" stop-color="#0B1124"/>
+                                <stop offset="100%" stop-color="#111936"/>
+                            </linearGradient>
+                            <radialGradient id="sunAura" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#FEF08A" stop-opacity="1"/>
+                                <stop offset="40%" stop-color="#F59E0B" stop-opacity="0.45"/>
+                                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="moonAura" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.65"/>
+                                <stop offset="50%" stop-color="#60A5FA" stop-opacity="0.22"/>
+                                <stop offset="100%" stop-color="#60A5FA" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="lampGlow" cx="50%" cy="0%" r="100%">
+                                <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.45"/>
+                                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+                            </radialGradient>
+                            <linearGradient id="railFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#38BDF8"/>
+                                <stop offset="50%" stop-color="#A855F7"/>
+                                <stop offset="100%" stop-color="#10B981"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Couches de ciel en transition douce -->
+                        <rect width="960" height="360" fill="url(#skyNightGrad)"/>
+                        <rect class="sky-layer-dawn" width="960" height="360" fill="url(#skyDawnGrad)"/>
+                        <rect class="sky-layer-day" width="960" height="360" fill="url(#skyDayGrad)"/>
+                        <rect class="sky-layer-dusk" width="960" height="360" fill="url(#skyDuskGrad)"/>
+
+                        <!-- Étoiles scintillantes -->
+                        <g class="stars-group" fill="#F8FAFC">
+                            <circle cx="88" cy="46" r="1.5"/>
+                            <circle cx="176" cy="78" r="1.2"/>
+                            <circle cx="272" cy="36" r="1.8"/>
+                            <circle cx="384" cy="64" r="1.2"/>
+                            <circle cx="566" cy="38" r="1.7"/>
+                            <circle cx="678" cy="72" r="1.3"/>
+                            <circle cx="772" cy="44" r="1.6"/>
+                            <circle cx="876" cy="76" r="1.4"/>
+                            <circle cx="480" cy="30" r="1.2"/>
+                        </g>
+
+                        <!-- Soleil en orbite continue -->
+                        <g class="sun-orbit">
+                            <circle cx="480" cy="64" r="54" fill="url(#sunAura)"/>
+                            <circle cx="480" cy="64" r="18" fill="#FEF08A"/>
+                        </g>
+
+                        <!-- Lune en orbite continue -->
+                        <g class="moon-orbit">
+                            <circle cx="480" cy="66" r="38" fill="url(#moonAura)"/>
+                            <path d="M487 50a16 16 0 1 0 10 28 13 13 0 1 1-10-28Z" fill="#E0F2FE"/>
+                        </g>
+
+                        <!-- Nuages doux -->
+                        <g class="cloud-1" opacity="0.18" fill="#E2E8F0">
+                            <rect x="190" y="84" width="88" height="20" rx="10"/>
+                            <circle cx="216" cy="84" r="14"/>
+                            <circle cx="246" cy="82" r="17"/>
+                        </g>
+                        <g class="cloud-2" opacity="0.14" fill="#E2E8F0">
+                            <rect x="646" y="96" width="98" height="22" rx="11"/>
+                            <circle cx="676" cy="96" r="15"/>
+                            <circle cx="708" cy="94" r="18"/>
+                        </g>
+
+                        <!-- Relief & horizon -->
+                        <path d="M0 268 Q170 222 340 256 T680 248 T960 264 L960 360 L0 360 Z" fill="#0B1224" fill-opacity="0.9"/>
+                        <path d="M0 294 L960 294 L960 360 L0 360 Z" fill="#070B16"/>
+
+                        <!-- ZONE GAUCHE : AVANT (Heures passées sur le PC à trier les e-mails) -->
+                        <g id="scene-avant">
+                            <rect x="34" y="128" width="218" height="154" rx="18" fill="#0B1120" fill-opacity="0.88" stroke="#F87171" stroke-opacity="0.4"/>
+                            <rect x="48" y="140" width="114" height="22" rx="11" fill="#EF4444" fill-opacity="0.18"/>
+                            <text x="105" y="155" text-anchor="middle" fill="#FCA5A5" font-size="10.5" font-weight="700" font-family="Inter, sans-serif">AVANT • SANS IA</text>
+
+                            <!-- Halo lampe de bureau qui s'allume la nuit -->
+                            <polygon class="night-lamp-cone" points="80,178 46,246 118,246" fill="url(#lampGlow)"/>
+                            <path d="M64 246h8v-48h16" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                            <path d="M78 178h18l6 10H72Z" fill="#94A3B8"/>
+
+                            <!-- Horloge qui tourne vite -->
+                            <circle cx="212" cy="153" r="12" fill="#1E293B" stroke="#F87171" stroke-width="1.6"/>
+                            <line x1="212" y1="153" x2="212" y2="144" stroke="#FCA5A5" stroke-width="1.8" stroke-linecap="round" class="clock-hand"/>
+                            <circle cx="212" cy="153" r="1.6" fill="#FCA5A5"/>
+
+                            <!-- Bureau + personne penchée devant PC -->
+                            <rect x="52" y="246" width="182" height="7" rx="3.5" fill="#334155"/>
+                            <circle cx="102" cy="200" r="13" fill="#FDBA74"/>
+                            <path d="M84 246c0-15 8-26 18-26s18 11 18 26" fill="#475569"/>
+                            <path d="M128 246l8-28h32l-8 28Z" fill="#1E293B" stroke="#60A5FA" stroke-width="1.6"/>
+
+                            <!-- Pile d'e-mails rouges -->
+                            <g class="stress-stack">
+                                <rect x="180" y="229" width="30" height="16" rx="3" fill="#EF4444"/>
+                                <path d="M180 229l15 9 15-9" stroke="#FEE2E2" stroke-width="1.5" fill="none"/>
+                                <rect x="184" y="211" width="30" height="16" rx="3" fill="#F87171"/>
+                                <path d="M184 211l15 9 15-9" stroke="#FEE2E2" stroke-width="1.5" fill="none"/>
+                                <rect x="181" y="193" width="30" height="16" rx="3" fill="#FCA5A5"/>
+                                <path d="M181 193l15 9 15-9" stroke="#7F1D1D" stroke-width="1.5" fill="none"/>
+                            </g>
+                            <text x="143" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11" font-weight="600" font-family="Inter, sans-serif">Des heures à trier les e-mails</text>
+                        </g>
+
+                        <!-- ZONE DROITE : APRÈS (Personne libérée, café & tâches à valeur ajoutée) -->
+                        <g id="scene-apres">
+                            <rect x="708" y="128" width="218" height="154" rx="18" fill="#0B1120" fill-opacity="0.88" stroke="#10B981" stroke-opacity="0.48"/>
+                            <rect x="722" y="140" width="132" height="22" rx="11" fill="#10B981" fill-opacity="0.18"/>
+                            <text x="788" y="155" text-anchor="middle" fill="#6EE7B7" font-size="10.5" font-weight="700" font-family="Inter, sans-serif">APRÈS • AVEC NUMETIC</text>
+
+                            <!-- Personne souriante + café -->
+                            <circle cx="768" cy="196" r="13" fill="#FDBA74"/>
+                            <path d="M763 198q5 5 10 0" stroke="#7C2D12" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                            <path d="M750 246c0-17 8-28 18-28s18 11 18 28" fill="#10B981"/>
+                            <rect x="789" y="222" width="14" height="14" rx="3" fill="#E2E8F0"/>
+                            <path class="coffee-steam" d="M794 218c0-5 5-5 5-10" stroke="#93C5FD" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+
+                            <!-- Tableau dossiers classés -->
+                            <rect x="826" y="192" width="76" height="54" rx="10" fill="#064E3B" fill-opacity="0.65" stroke="#34D399" stroke-opacity="0.6"/>
+                            <path d="M840 210l6 6 12-12" stroke="#6EE7B7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <rect x="864" y="206" width="24" height="5" rx="2.5" fill="#A7F3D0"/>
+                            <rect x="840" y="224" width="48" height="5" rx="2.5" fill="#6EE7B7" fill-opacity="0.7"/>
+                            <rect x="840" y="234" width="34" height="5" rx="2.5" fill="#6EE7B7" fill-opacity="0.45"/>
+
+                            <text x="817" y="270" text-anchor="middle" fill="#D1FAE5" font-size="11" font-weight="600" font-family="Inter, sans-serif">Temps libéré pour vos clients</text>
+                        </g>
+
+                        <!-- RAIL & TRAIN AUTOMATISÉ CONTINU 24/7 -->
+                        <g id="automation-train-track">
+                            <line x1="110" y1="322" x2="850" y2="322" stroke="#1E293B" stroke-width="10" stroke-linecap="round"/>
+                            <line x1="110" y1="322" x2="850" y2="322" stroke="url(#railFlowGrad)" stroke-width="4" stroke-linecap="round" class="rail-dashes"/>
+
+                            <!-- 3 wagons en circulation continue -->
+                            <g class="train-car-1">
+                                <g class="car-mail">
+                                    <rect x="-25" y="294" width="50" height="26" rx="8" fill="#0284C7" stroke="#7DD3FC" stroke-width="1.5"/>
+                                    <path d="M-14 302l14 8 14-8" stroke="#FFFFFF" stroke-width="1.8" fill="none"/>
+                                    <circle cx="-12" cy="322" r="4" fill="#38BDF8"/>
+                                    <circle cx="12" cy="322" r="4" fill="#38BDF8"/>
+                                </g>
+                                <g class="car-doc">
+                                    <rect x="-25" y="294" width="50" height="26" rx="8" fill="#059669" stroke="#6EE7B7" stroke-width="1.5"/>
+                                    <path d="M-12 311h24v-10h-10l-3-3h-11Z" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+                                    <path d="M-4 307l3 3 6-6" stroke="#A7F3D0" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                                    <circle cx="-12" cy="322" r="4" fill="#34D399"/>
+                                    <circle cx="12" cy="322" r="4" fill="#34D399"/>
+                                </g>
+                            </g>
+
+                            <g class="train-car-2">
+                                <g class="car-mail">
+                                    <rect x="-25" y="294" width="50" height="26" rx="8" fill="#0284C7" stroke="#7DD3FC" stroke-width="1.5"/>
+                                    <path d="M-14 302l14 8 14-8" stroke="#FFFFFF" stroke-width="1.8" fill="none"/>
+                                    <circle cx="-12" cy="322" r="4" fill="#38BDF8"/>
+                                    <circle cx="12" cy="322" r="4" fill="#38BDF8"/>
+                                </g>
+                                <g class="car-doc">
+                                    <rect x="-25" y="294" width="50" height="26" rx="8" fill="#059669" stroke="#6EE7B7" stroke-width="1.5"/>
+                                    <path d="M-12 311h24v-10h-10l-3-3h-11Z" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+                                    <path d="M-4 307l3 3 6-6" stroke="#A7F3D0" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                                    <circle cx="-12" cy="322" r="4" fill="#34D399"/>
+                                    <circle cx="12" cy="322" r="4" fill="#34D399"/>
+                                </g>
+                            </g>
+
+                            <g class="train-car-3">
+                                <g class="car-mail">
+                                    <rect x="-25" y="294" width="50" height="26" rx="8" fill="#0284C7" stroke="#7DD3FC" stroke-width="1.5"/>
+                                    <path d="M-14 302l14 8 14-8" stroke="#FFFFFF" stroke-width="1.8" fill="none"/>
+                                    <circle cx="-12" cy="322" r="4" fill="#38BDF8"/>
+                                    <circle cx="12" cy="322" r="4" fill="#38BDF8"/>
+                                </g>
+                                <g class="car-doc">
+                                    <rect x="-25" y="294" width="50" height="26" rx="8" fill="#059669" stroke="#6EE7B7" stroke-width="1.5"/>
+                                    <path d="M-12 311h24v-10h-10l-3-3h-11Z" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+                                    <path d="M-4 307l3 3 6-6" stroke="#A7F3D0" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                                    <circle cx="-12" cy="322" r="4" fill="#34D399"/>
+                                    <circle cx="12" cy="322" r="4" fill="#34D399"/>
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- STATION CENTRALE IA NUMETIC (Opaque pour masquer le passage interne) -->
+                        <g id="station-ia">
+                            <circle class="ia-pulse" cx="480" cy="242" r="44" stroke="#A855F7" stroke-width="2" fill="none"/>
+                            <rect x="416" y="190" width="128" height="146" rx="20" fill="#151238" stroke="#8B5CF6" stroke-width="2"/>
+                            <text x="480" y="212" text-anchor="middle" fill="#EDE9FE" font-size="11" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">STATION IA</text>
+                            <g class="ia-gear" stroke="#C084FC" stroke-width="2.4" stroke-linecap="round">
+                                <circle cx="480" cy="242" r="14" fill="#4C1D95" stroke="#A855F7"/>
+                                <line x1="480" y1="220" x2="480" y2="226"/>
+                                <line x1="480" y1="258" x2="480" y2="264"/>
+                                <line x1="458" y1="242" x2="464" y2="242"/>
+                                <line x1="496" y1="242" x2="502" y2="242"/>
+                                <line x1="464" y1="226" x2="469" y2="231"/>
+                                <line x1="491" y1="253" x2="496" y2="258"/>
+                                <line x1="496" y1="226" x2="491" y2="231"/>
+                                <line x1="469" y1="253" x2="464" y2="258"/>
+                            </g>
+                            <text x="480" y="282" text-anchor="middle" fill="#A5B4FC" font-size="10" font-weight="600" font-family="Inter, sans-serif">Tri • Devis • CRM</text>
+                            <rect x="442" y="294" width="76" height="30" rx="8" fill="#090D1C" stroke="#6366F1" stroke-opacity="0.55"/>
+                            <text x="480" y="313" text-anchor="middle" fill="#34D399" font-size="10" font-weight="700" font-family="Inter, sans-serif">ACTIF 24/7</text>
+                        </g>
+                    </svg>
+
+                    <div class="cinema-footer">
+                        <div class="metric-strip cinema-metrics">
+                            <div><strong>+12h</strong><span>gagnées / semaine</span></div>
+                            <div><strong>0 ligne</strong><span>de code complexe</span></div>
+                            <div><strong>24/7</strong><span>flux continu jour &amp; nuit</span></div>
                         </div>
-                        <div class="flow-connector conn-blue" data-conn="0" aria-hidden="true">
-                            <span class="flow-track"></span>
-                            <span class="flow-packet">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
-                            </span>
-                        </div>
-                        <div class="node-box node-highlight" data-step="1" data-theme="violet" data-label="2. Analyse IA &amp; classement des données...">
-                            <span class="node-badge">IA</span>
-                            <svg class="spin-soft" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
-                            <span>Analyse IA</span>
-                        </div>
-                        <div class="flow-connector conn-emerald" data-conn="1" aria-hidden="true">
-                            <span class="flow-track"></span>
-                            <span class="flow-packet">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            </span>
-                        </div>
-                        <div class="node-box node-done" data-step="2" data-theme="emerald" data-label="3. Dossier classé, devis &amp; CRM à jour ✓">
-                            <span class="node-badge">Sortie</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><path d="m9 14 2 2 4-4"/></svg>
-                            <span>Dossier &amp; CRM</span>
-                        </div>
-                    </div>
-                    <div class="workflow-live-bar theme-blue" id="workflow-live-bar">
-                        <span id="workflow-live-label">1. Nouveau dossier &amp; e-mail client reçus...</span>
-                        <span class="workflow-progress" id="workflow-progress"></span>
-                    </div>
-                    <div class="metric-strip">
-                        <div><strong>+12h</strong><span>gagnées / semaine</span></div>
-                        <div><strong>0 ligne</strong><span>de code complexe</span></div>
-                        <div><strong>Sobre</strong><span>Audit énergie IA</span></div>
                     </div>
                 </div>
             </div>
@@ -382,6 +572,6 @@
         </div>
     </footer>
 
-    <script src="app.js?v=20261115a"></script>
+    <script src="app.js?v=20261115b"></script>
 </body>
 </html>
