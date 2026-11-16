@@ -7,13 +7,14 @@
     <meta name="description" content="NUMETIC libère le temps de vos équipes grâce à l'IA et aux automatisations 100% No-Code. Audits, formations sur-mesure et sobriété énergétique IA pour PME et TPE à Liège et en Wallonie.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261115f">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&family=Playwrite+BE+WAL:wght@300;400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=20261116aj">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-    <!-- Couches d'arrière-plan Glassmorphism, Flux IA & Parallax -->
+    <!-- Couches d'arrière-plan Glassmorphism, Flux IA & Ciel René Magritte étendu à toute la page -->
     <div class="parallax-stage" aria-hidden="true">
+        <canvas id="magritte-sky-bg" class="magritte-sky-bg" aria-hidden="true"></canvas>
         <div class="grid-overlay"></div>
         <!-- Visuel de fond thématique IA & No-Code en transparence -->
         <svg class="hero-theme-svg" data-speed="0.08" viewBox="0 0 1440 820" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -94,7 +95,7 @@
         <section id="hero" class="hero-section">
             <div class="container">
                 <div class="hero-copy hero-copy-centered">
-                    <h1>Libérez le temps de vos équipes grâce à l'IA et au No-Code.</h1>
+                    <h1>Libérez votre temps et celui de vos équipes grâce à l'Intelligence artificielle</h1>
                     <p class="hero-subtitle">
                         Automatisations sur-mesure, formations pratiques et audits énergétiques de l'IA — sans aucune compétence technique requise.
                     </p>
@@ -107,599 +108,41 @@
                     </div>
                 </div>
 
-                <!-- Diorama BD 2 Temps : Entreprise -> Trajet -> Domicile + Cycle Jour/Nuit (intégré sans cadre) -->
+                <!-- Diorama René Magritte 2 Jours : Entreprise -> Trajet -> Domicile + Jeu du Chapeau Melon -->
                 <div class="cinema-stage phase-1 stage-t1-office" id="cinema-stage" data-mouse-parallax="8">
-                    <svg class="cinema-svg" viewBox="0 0 960 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scène animée style BD en deux temps : un jour sans IA puis un jour avec automatisation IA NUMETIC">
-                        <defs>
-                            <linearGradient id="skyDawnGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#3B4D7A"/>
-                                <stop offset="60%" stop-color="#7E92B8"/>
-                                <stop offset="100%" stop-color="#F6C28B"/>
-                            </linearGradient>
-                            <linearGradient id="skyDayGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#1D4ED8"/>
-                                <stop offset="55%" stop-color="#3B82F6"/>
-                                <stop offset="100%" stop-color="#93C5FD"/>
-                            </linearGradient>
-                            <linearGradient id="skyDuskGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#312E81"/>
-                                <stop offset="52%" stop-color="#9333EA" stop-opacity="0.72"/>
-                                <stop offset="100%" stop-color="#FB923C" stop-opacity="0.82"/>
-                            </linearGradient>
-                            <linearGradient id="skyNightGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#050814"/>
-                                <stop offset="65%" stop-color="#0F172A"/>
-                                <stop offset="100%" stop-color="#1E293B"/>
-                            </linearGradient>
-                            <radialGradient id="sunAura" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#FEF08A" stop-opacity="1"/>
-                                <stop offset="45%" stop-color="#F59E0B" stop-opacity="0.45"/>
-                                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
-                            </radialGradient>
-                            <radialGradient id="moonAura" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#E0F2FE" stop-opacity="0.7"/>
-                                <stop offset="55%" stop-color="#60A5FA" stop-opacity="0.2"/>
-                                <stop offset="100%" stop-color="#60A5FA" stop-opacity="0"/>
-                            </radialGradient>
-                            <radialGradient id="streetGlow" cx="50%" cy="0%" r="100%">
-                                <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.5"/>
-                                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
-                            </radialGradient>
-                            <radialGradient id="cozyLampGlow" cx="50%" cy="20%" r="80%">
-                                <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.48"/>
-                                <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
-                            </radialGradient>
-                            <!-- Textures 3D douces Monsieur Madame & décors -->
-                            <radialGradient id="mmOrangeGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#FDBA74"/>
-                                <stop offset="48%" stop-color="#F97316"/>
-                                <stop offset="100%" stop-color="#C2410C"/>
-                            </radialGradient>
-                            <radialGradient id="mmGreenGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#6EE7B7"/>
-                                <stop offset="48%" stop-color="#10B981"/>
-                                <stop offset="100%" stop-color="#047857"/>
-                            </radialGradient>
-                            <radialGradient id="mmBlueGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#BAE6FD"/>
-                                <stop offset="50%" stop-color="#38BDF8"/>
-                                <stop offset="100%" stop-color="#0284C7"/>
-                            </radialGradient>
-                            <radialGradient id="mmPinkGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#FECDD3"/>
-                                <stop offset="50%" stop-color="#FB7185"/>
-                                <stop offset="100%" stop-color="#BE123C"/>
-                            </radialGradient>
-                            <radialGradient id="mmYellowGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#FEF08A"/>
-                                <stop offset="50%" stop-color="#FACC15"/>
-                                <stop offset="100%" stop-color="#CA8A04"/>
-                            </radialGradient>
-                            <radialGradient id="treeLeafGrad" cx="35%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#4ADE80"/>
-                                <stop offset="55%" stop-color="#16A34A"/>
-                                <stop offset="100%" stop-color="#14532D"/>
-                            </radialGradient>
-                            <linearGradient id="cedarWoodGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#D97706"/>
-                                <stop offset="50%" stop-color="#B45309"/>
-                                <stop offset="100%" stop-color="#78350F"/>
-                            </linearGradient>
-                            <linearGradient id="modernSlateGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#475569"/>
-                                <stop offset="55%" stop-color="#334155"/>
-                                <stop offset="100%" stop-color="#1E293B"/>
-                            </linearGradient>
-                            <linearGradient id="zincRoofGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#334155"/>
-                                <stop offset="100%" stop-color="#0F172A"/>
-                            </linearGradient>
-                            <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#1E293B" stop-opacity="0.92"/>
-                                <stop offset="100%" stop-color="#090D16" stop-opacity="0"/>
-                            </linearGradient>
-                            <pattern id="facadeLines" width="12" height="12" patternUnits="userSpaceOnUse">
-                                <line x1="0" y1="11.5" x2="12" y2="11.5" stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1"/>
-                            </pattern>
-                            <pattern id="woodPlanks" width="16" height="8" patternUnits="userSpaceOnUse">
-                                <line x1="0" y1="7.5" x2="16" y2="7.5" stroke="#451A03" stroke-opacity="0.45" stroke-width="1"/>
-                            </pattern>
-                        </defs>
 
-                        <!-- 1. Ciels pilotés en continu par l'atmosphère globale du site (sans cadre rectangulaire) -->
-                        <rect id="sky-dawn" width="960" height="360" fill="url(#skyDawnGrad)" fill-opacity="0" opacity="0"/>
-                        <rect id="sky-day" width="960" height="360" fill="url(#skyDayGrad)" fill-opacity="0" opacity="1"/>
-                        <rect id="sky-dusk" width="960" height="360" fill="url(#skyDuskGrad)" fill-opacity="0" opacity="0"/>
+                    <!-- Inscriptions poétiques grand format dans le ciel (SANS bulles, apparition/disparition pilotée par app.js) -->
+                    <div class="magritte-keywords-layer" aria-hidden="true">
+                        <!-- Jour 1 — Bureau -->
+                        <div class="mk-word mk-pos-left" id="mk-j1-mails">Gestion des mails</div>
+                        <div class="mk-word mk-pos-left" id="mk-j1-admin">Tâches administratives répétitives</div>
 
-                        <!-- Étoiles (nuit) -->
-                        <g id="stars-layer" fill="#F8FAFC" opacity="0">
-                            <circle cx="90" cy="40" r="1.6"/><circle cx="185" cy="70" r="1.2"/>
-                            <circle cx="280" cy="34" r="1.8"/><circle cx="390" cy="56" r="1.3"/>
-                            <circle cx="490" cy="28" r="1.5"/><circle cx="600" cy="48" r="1.7"/>
-                            <circle cx="710" cy="68" r="1.2"/><circle cx="810" cy="38" r="1.6"/>
-                            <circle cx="900" cy="64" r="1.4"/><circle cx="330" cy="82" r="1.1"/>
-                            <circle cx="545" cy="76" r="1.3"/><circle cx="755" cy="32" r="1.5"/>
-                        </g>
+                        <!-- Jour 1 — Maison soir -->
+                        <div class="mk-word mk-pos-right" id="mk-j1-soir">Paperasse administrative à traiter le soir</div>
 
-                        <!-- Soleil & Lune pilotés avec précision -->
-                        <g id="sun-orb" opacity="1">
-                            <circle cx="480" cy="68" r="54" fill="url(#sunAura)"/>
-                            <circle cx="480" cy="68" r="18" fill="#FEF08A"/>
-                        </g>
-                        <g id="moon-orb" opacity="0">
-                            <circle cx="480" cy="68" r="36" fill="url(#moonAura)"/>
-                            <path d="M486 52a15 15 0 1 0 9 26 12 12 0 1 1-9-26Z" fill="#E0F2FE"/>
-                        </g>
+                        <!-- Jour 2 — En grand au milieu : Avec + Logo officiel Numetic. très grand -->
+                        <div class="mk-center-hero" id="mk-j2-center">
+                            <span class="mk-center-heading">Avec</span>
+                            <img src="images/logo_numetic_white.png" alt="NUMETIC." class="mk-center-logo-lg">
+                        </div>
 
-                        <!-- Nuages BD doux -->
-                        <g class="cloud-1" opacity="0.24" fill="#FFFFFF">
-                            <rect x="210" y="76" width="84" height="20" rx="10"/>
-                            <circle cx="236" cy="76" r="14"/><circle cx="264" cy="74" r="17"/>
-                        </g>
-                        <g class="cloud-2" opacity="0.18" fill="#FFFFFF">
-                            <rect x="610" y="88" width="92" height="20" rx="10"/>
-                            <circle cx="638" cy="88" r="14"/><circle cx="668" cy="86" r="17"/>
-                        </g>
+                        <!-- Jour 2 — Bureau -->
+                        <div class="mk-word mk-pos-left mk-word-eco" id="mk-j2-auto">Automatisation IA</div>
+                        <div class="mk-word mk-pos-left mk-word-eco" id="mk-j2-collab">Collaboration</div>
+                        <div class="mk-word mk-pos-left mk-word-eco" id="mk-j2-opti">Optimisation</div>
 
-                        <!-- Collines BD en arrière-plan (double profondeur) -->
-                        <path d="M0 264 Q220 226 480 254 T960 242 L960 360 L0 360 Z" fill="#1E293B" fill-opacity="0.45"/>
-                        <path d="M0 276 Q190 252 430 272 T960 266 L960 360 L0 360 Z" fill="#0F172A" fill-opacity="0.42"/>
+                        <!-- Jour 2 — Maison soirée -->
+                        <div class="mk-word mk-pos-right mk-word-eco" id="mk-j2-detente">Rentrer plus tôt et se détendre</div>
+                    </div>
 
-                        <!-- Sol : Trottoir & route texturés -->
-                        <rect x="0" y="290" width="960" height="70" fill="url(#roadGrad)"/>
-                        <rect x="0" y="290" width="960" height="11" fill="#475569"/>
-                        <line x1="0" y1="290.5" x2="960" y2="290.5" stroke="#94A3B8" stroke-opacity="0.35" stroke-width="1"/>
-                        <line x1="0" y1="326" x2="960" y2="326" stroke="#64748B" stroke-width="2.2" stroke-dasharray="18 14"/>
-
-                        <!-- Arbres stylisés BD & Lampadaires -->
-                        <g id="street-scenery">
-                            <g transform="translate(328 224)">
-                                <path d="M14 38v28M14 48l-7-7M14 44l7-6" stroke="#57534E" stroke-width="3.6" stroke-linecap="round"/>
-                                <ellipse cx="14" cy="24" rx="20" ry="21" fill="url(#treeLeafGrad)" stroke="#052E16" stroke-width="1.2"/>
-                                <circle cx="8" cy="15" r="7" fill="#BBF7D0" fill-opacity="0.25"/>
-                            </g>
-                            <g transform="translate(550 230)">
-                                <path d="M13 34v26M13 42l6-5" stroke="#57534E" stroke-width="3.4" stroke-linecap="round"/>
-                                <ellipse cx="13" cy="22" rx="17" ry="18" fill="url(#treeLeafGrad)" stroke="#052E16" stroke-width="1.2"/>
-                                <circle cx="9" cy="14" r="6" fill="#BBF7D0" fill-opacity="0.25"/>
-                            </g>
-                            <!-- Lampadaires (pilotés la nuit) -->
-                            <g>
-                                <polygon class="night-lamp-halo" points="416,204 382,290 450,290" fill="url(#streetGlow)" opacity="0"/>
-                                <rect x="414" y="204" width="4" height="86" fill="#64748B"/>
-                                <rect x="408" y="198" width="16" height="7" rx="3" fill="#FDE68A"/>
-                            </g>
-                            <g>
-                                <polygon class="night-lamp-halo" points="618,204 584,290 652,290" fill="url(#streetGlow)" opacity="0"/>
-                                <rect x="616" y="204" width="4" height="86" fill="#64748B"/>
-                                <rect x="610" y="198" width="16" height="7" rx="3" fill="#FDE68A"/>
-                            </g>
-                        </g>
-
-                        <!-- 2. ENTREPRISE MODERNE (architecture verre, bois & porte-à-faux LED) -->
-                        <g id="company-building">
-                            <!-- Terrasse toit-terrasse : garde-corps verre, plantes & panneaux solaires -->
-                            <rect x="34" y="83" width="56" height="12" rx="1.5" fill="#38BDF8" fill-opacity="0.16" stroke="#94A3B8" stroke-width="1"/>
-                            <ellipse cx="48" cy="87" rx="8" ry="5" fill="url(#treeLeafGrad)"/>
-                            <ellipse cx="64" cy="86" rx="9" ry="6" fill="url(#treeLeafGrad)"/>
-                            <polygon points="218,95 228,83 274,83 266,95" fill="#1E3A8A" stroke="#60A5FA" stroke-width="1"/>
-                            <line x1="234" y1="83" x2="226" y2="95" stroke="#93C5FD" stroke-opacity="0.5" stroke-width="0.9"/>
-                            <line x1="252" y1="83" x2="244" y2="95" stroke="#93C5FD" stroke-opacity="0.5" stroke-width="0.9"/>
-
-                            <!-- Volume principal béton architectural & bardage -->
-                            <rect x="24" y="106" width="262" height="184" rx="4" fill="url(#modernSlateGrad)" stroke="#475569" stroke-width="1.6"/>
-                            <rect x="24" y="106" width="262" height="184" rx="4" fill="url(#facadeLines)"/>
-                            <!-- Ailes latérales en lames de bois chaleureux -->
-                            <rect x="24" y="106" width="12" height="184" rx="2" fill="url(#cedarWoodGrad)" opacity="0.9"/>
-                            <rect x="274" y="106" width="12" height="184" rx="2" fill="url(#cedarWoodGrad)" opacity="0.9"/>
-                            <!-- Toit plat en porte-à-faux avec liseré LED -->
-                            <rect x="14" y="95" width="282" height="12" rx="3" fill="#0F172A" stroke="#64748B" stroke-width="1.2"/>
-                            <line x1="20" y1="107" x2="290" y2="107" stroke="#38BDF8" stroke-width="2" stroke-opacity="0.75"/>
-                            <!-- Enseigne lumineuse moderne -->
-                            <rect x="96" y="109" width="118" height="18" rx="5" fill="#0B1120" stroke="#38BDF8" stroke-width="1.2"/>
-                            <text x="155" y="121.5" text-anchor="middle" fill="#BAE6FD" font-size="9" font-weight="800" letter-spacing="0.08em" font-family="Plus Jakarta Sans, sans-serif">ENTREPRISE</text>
-
-                            <!-- Grande baie vitrée mur-rideau -->
-                            <rect x="38" y="134" width="234" height="136" rx="4" fill="#0B1120" stroke="#475569" stroke-width="1.8"/>
-                            <polygon points="38,134 94,134 52,270 38,270" fill="#FFFFFF" fill-opacity="0.05"/>
-                            <polygon points="104,134 122,134 80,270 62,270" fill="#FFFFFF" fill-opacity="0.025"/>
-                            <!-- Plinthe béton moderne -->
-                            <rect x="24" y="274" width="262" height="16" fill="#0F172A" fill-opacity="0.65"/>
-
-                            <!-- === SOUS-SCÈNE T1 BUREAU : Monsieur Débordé travaille non-stop + avalanche de mails === -->
-                            <g class="sub-t1-office">
-                                <!-- Horloge murale qui tourne vite -->
-                                <circle cx="246" cy="154" r="13" fill="#FEF3C7" stroke="#111827" stroke-width="2"/>
-                                <circle cx="246" cy="154" r="1.6" fill="#111827"/>
-                                <line x1="246" y1="154" x2="246" y2="145" stroke="#111827" stroke-width="1.8" stroke-linecap="round"/>
-                                <line class="clock-hand-fast" x1="246" y1="154" x2="254" y2="154" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round"/>
-
-                                <!-- Bureau, tasse de café, clavier & Écran PC -->
-                                <rect x="50" y="242" width="208" height="8" rx="3" fill="#D97706" stroke="#111827" stroke-width="2"/>
-                                <rect x="64" y="198" width="50" height="36" rx="5" fill="#1E293B" stroke="#111827" stroke-width="2.2"/>
-                                <rect x="69" y="203" width="40" height="24" rx="2.5" fill="#0F172A"/>
-                                <rect x="83" y="234" width="12" height="8" fill="#64748B" stroke="#111827" stroke-width="1.5"/>
-                                <rect x="116" y="237" width="16" height="5" rx="2" fill="#E2E8F0" stroke="#111827" stroke-width="1.4"/>
-                                <!-- Tasse de café fumante -->
-                                <rect x="52" y="230" width="9" height="12" rx="2" fill="#F8FAFC" stroke="#111827" stroke-width="1.5"/>
-                                <path class="steam-wisp" d="M56 227c-2-3 2-5 0-8" stroke="#E2E8F0" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-                                <!-- Contenu écran stressant -->
-                                <line x1="74" y1="210" x2="103" y2="210" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
-                                <line x1="74" y1="217" x2="96" y2="217" stroke="#FCA5A5" stroke-width="2.2" stroke-linecap="round"/>
-                                <line x1="74" y1="223" x2="104" y2="223" stroke="#F87171" stroke-width="2.2" stroke-linecap="round"/>
-
-                                <!-- MONSIEUR DÉBORDÉ (agrandi + texture 3D orange) -->
-                                <g transform="translate(152 244) scale(1.22) translate(-152 -244)">
-                                <g class="bd-char-busy">
-                                    <!-- Bras arrière qui tape -->
-                                    <g class="arm-type-r">
-                                        <path d="M138 220c-8 6-14 11-20 14" stroke="#111827" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-                                        <path d="M138 220c-8 6-14 11-20 14" stroke="#FB923C" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-                                        <circle cx="117" cy="235" r="4" fill="#FB923C" stroke="#111827" stroke-width="1.6"/>
-                                    </g>
-                                    <!-- Corps rond iconique Monsieur Madame -->
-                                    <g class="char-busy-head">
-                                        <ellipse cx="152" cy="212" rx="23" ry="28" fill="url(#mmOrangeGrad)" stroke="#111827" stroke-width="2.4"/>
-                                        <path d="M138 195c4-6 10-8 15-8" stroke="#FDBA74" stroke-width="3" stroke-linecap="round" fill="none"/>
-                                        <polygon points="150,214 154,214 153,229 151,229" fill="#EF4444" stroke="#111827" stroke-width="1.3"/>
-                                        <path d="M146 184c1-5 5-7 8-4 2-3 6-2 6 3" stroke="#111827" stroke-width="2" stroke-linecap="round" fill="none"/>
-                                        <line x1="139" y1="196" x2="146" y2="199" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
-                                        <line x1="150" y1="199" x2="157" y2="196" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
-                                        <ellipse cx="143" cy="203" rx="3.4" ry="4.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.5"/>
-                                        <circle cx="142.2" cy="203.5" r="1.7" fill="#111827"/>
-                                        <ellipse cx="153" cy="203" rx="3.4" ry="4.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.5"/>
-                                        <circle cx="152.2" cy="203.5" r="1.7" fill="#111827"/>
-                                        <circle cx="143" cy="203" r="5" fill="none" stroke="#1E293B" stroke-width="1.3"/>
-                                        <circle cx="153" cy="203" r="5" fill="none" stroke="#1E293B" stroke-width="1.3"/>
-                                        <path d="M142 212q3-3 6 0t6 0" stroke="#111827" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                                        <path class="sweat-drop" d="M170 190c3 4 4 7 1.5 9s-5 1-5-1.5 1.5-5 3.5-7.5Z" fill="#38BDF8" stroke="#111827" stroke-width="1.2"/>
-                                    </g>
-                                    <!-- Bras avant qui tape -->
-                                    <g class="arm-type-l">
-                                        <path d="M144 222c-8 6-14 11-22 14" stroke="#111827" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-                                        <path d="M144 222c-8 6-14 11-22 14" stroke="#F97316" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-                                        <circle cx="121" cy="236" r="4" fill="#F97316" stroke="#111827" stroke-width="1.6"/>
-                                    </g>
-                                </g>
-                                </g>
-
-                                <!-- Pile de mails rouges avec badge ! -->
-                                <g class="stress-stack">
-                                    <rect x="194" y="226" width="36" height="16" rx="3" fill="#EF4444" stroke="#111827" stroke-width="1.8"/>
-                                    <path d="M194 226l18 9 18-9" stroke="#FEE2E2" stroke-width="1.5" fill="none"/>
-                                    <rect x="197" y="209" width="36" height="16" rx="3" fill="#F87171" stroke="#111827" stroke-width="1.8"/>
-                                    <path d="M197 209l18 9 18-9" stroke="#FEE2E2" stroke-width="1.5" fill="none"/>
-                                    <rect x="191" y="192" width="36" height="16" rx="3" fill="#FCA5A5" stroke="#111827" stroke-width="1.8"/>
-                                    <path d="M191 192l18 9 18-9" stroke="#7F1D1D" stroke-width="1.5" fill="none"/>
-                                    <circle cx="234" cy="190" r="8" fill="#FACC15" stroke="#111827" stroke-width="1.6"/>
-                                    <text x="234" y="193.5" text-anchor="middle" fill="#111827" font-size="10" font-weight="900" font-family="Inter, sans-serif">!</text>
-                                </g>
-                                <g class="mail-drop-t1">
-                                    <rect x="198" y="152" width="28" height="16" rx="3" fill="#FCA5A5" stroke="#111827" stroke-width="1.6"/>
-                                    <path d="M198 152l14 8 14-8" stroke="#7F1D1D" stroke-width="1.4" fill="none"/>
-                                </g>
-                            </g>
-
-                            <!-- === SOUS-SCÈNE T2 BUREAU : PC code auto + Monsieur NUMETIC discute avec Monsieur Client === -->
-                            <g class="sub-t2-office">
-                                <!-- Poste PC autonome à gauche -->
-                                <rect x="46" y="242" width="88" height="7" rx="3" fill="#D97706" stroke="#111827" stroke-width="1.8"/>
-                                <rect x="54" y="190" width="70" height="46" rx="5" fill="#0F172A" stroke="#111827" stroke-width="2.2"/>
-                                <rect x="83" y="236" width="12" height="6" fill="#64748B" stroke="#111827" stroke-width="1.4"/>
-                                <g class="code-lines">
-                                    <line x1="62" y1="201" x2="94" y2="201" stroke="#38BDF8" stroke-width="2.6" stroke-linecap="round"/>
-                                    <line x1="67" y1="208" x2="115" y2="208" stroke="#A78BFA" stroke-width="2.6" stroke-linecap="round"/>
-                                    <line x1="62" y1="215" x2="106" y2="215" stroke="#34D399" stroke-width="2.6" stroke-linecap="round"/>
-                                    <line x1="67" y1="222" x2="100" y2="222" stroke="#38BDF8" stroke-width="2.6" stroke-linecap="round"/>
-                                    <line x1="62" y1="229" x2="88" y2="229" stroke="#FBBF24" stroke-width="2.6" stroke-linecap="round"/>
-                                </g>
-                                <!-- Engrenage IA qui tourne -->
-                                <g transform="translate(88 166)">
-                                    <g class="ai-gear">
-                                        <circle cx="0" cy="0" r="10.5" fill="#8B5CF6" stroke="#111827" stroke-width="2" stroke-dasharray="4.5 2"/>
-                                        <circle cx="0" cy="0" r="4" fill="#FDE68A" stroke="#111827" stroke-width="1.3"/>
-                                    </g>
-                                </g>
-                                <text x="88" y="148" text-anchor="middle" fill="#DDD6FE" font-size="8.5" font-weight="800" font-family="Inter, sans-serif">CODE AUTO IA</text>
-
-                                <!-- Monsieur NUMETIC (émeraude) & Monsieur Client (bleu ciel) agrandis + textures 3D -->
-                                <g class="office-chat-group" transform="translate(200 266) scale(1.22) translate(-200 -266)">
-                                    <ellipse cx="163" cy="266" rx="18" ry="3.5" fill="#020617" fill-opacity="0.45"/>
-                                    <ellipse cx="234" cy="266" rx="18" ry="3.5" fill="#020617" fill-opacity="0.45"/>
-                                    <!-- Monsieur NUMETIC -->
-                                    <g class="char-hero-talk">
-                                        <path d="M158 244v18" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <path d="M168 244v18" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <ellipse cx="156" cy="264" rx="6.5" ry="3.5" fill="#F8FAFC" stroke="#111827" stroke-width="1.8"/>
-                                        <ellipse cx="170" cy="264" rx="6.5" ry="3.5" fill="#F8FAFC" stroke="#111827" stroke-width="1.8"/>
-                                        <ellipse cx="163" cy="224" rx="20" ry="23" fill="url(#mmGreenGrad)" stroke="#111827" stroke-width="2.2"/>
-                                        <path d="M151 210c4-5 9-7 14-6" stroke="#6EE7B7" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-                                        <ellipse cx="163" cy="199" rx="11" ry="2.6" fill="#0F172A"/>
-                                        <path d="M156 199c0-7 14-7 14 0Z" fill="#1E293B" stroke="#111827" stroke-width="1.6"/>
-                                        <ellipse cx="158" cy="213" rx="3" ry="3.8" fill="#FFFFFF" stroke="#111827" stroke-width="1.4"/>
-                                        <circle cx="158.6" cy="213.2" r="1.5" fill="#111827"/>
-                                        <ellipse cx="167" cy="213" rx="3" ry="3.8" fill="#FFFFFF" stroke="#111827" stroke-width="1.4"/>
-                                        <circle cx="167.6" cy="213.2" r="1.5" fill="#111827"/>
-                                        <circle cx="158" cy="213" r="4.5" fill="none" stroke="#1E293B" stroke-width="1.2"/>
-                                        <circle cx="167" cy="213" r="4.5" fill="none" stroke="#1E293B" stroke-width="1.2"/>
-                                        <ellipse cx="154" cy="219" rx="2.5" ry="1.5" fill="#FB7185" fill-opacity="0.45"/>
-                                        <ellipse cx="171" cy="219" rx="2.5" ry="1.5" fill="#FB7185" fill-opacity="0.45"/>
-                                        <path d="M157 223q6 6 12 0" stroke="#111827" stroke-width="2" stroke-linecap="round" fill="none"/>
-                                        <g class="gesture-arm">
-                                            <path d="M181 223c7-3 12-7 16-12" stroke="#111827" stroke-width="5" stroke-linecap="round" fill="none"/>
-                                            <path d="M181 223c7-3 12-7 16-12" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                            <circle cx="198" cy="210" r="4" fill="#10B981" stroke="#111827" stroke-width="1.6"/>
-                                        </g>
-                                    </g>
-
-                                    <!-- Monsieur Client (Mr. Tall bleu ciel + noeud papillon + tablette) -->
-                                    <g class="char-client-talk">
-                                        <path d="M229 246v16" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <path d="M239 246v16" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <ellipse cx="227" cy="264" rx="6.5" ry="3.5" fill="#334155" stroke="#111827" stroke-width="1.8"/>
-                                        <ellipse cx="241" cy="264" rx="6.5" ry="3.5" fill="#334155" stroke="#111827" stroke-width="1.8"/>
-                                        <g class="client-head-nod">
-                                            <rect x="218" y="196" width="32" height="52" rx="15" fill="url(#mmBlueGrad)" stroke="#111827" stroke-width="2.2"/>
-                                            <path d="M224 203c3-3 7-4 11-3" stroke="#BAE6FD" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-                                            <polygon points="229,227 234,230 229,233" fill="#EF4444" stroke="#111827" stroke-width="1.2"/>
-                                            <polygon points="239,227 234,230 239,233" fill="#EF4444" stroke="#111827" stroke-width="1.2"/>
-                                            <ellipse cx="229" cy="210" rx="2.8" ry="3.6" fill="#FFFFFF" stroke="#111827" stroke-width="1.4"/>
-                                            <circle cx="228.4" cy="210.2" r="1.4" fill="#111827"/>
-                                            <ellipse cx="238" cy="210" rx="2.8" ry="3.6" fill="#FFFFFF" stroke="#111827" stroke-width="1.4"/>
-                                            <circle cx="237.4" cy="210.2" r="1.4" fill="#111827"/>
-                                            <path d="M228 220q5.5 5 11 0" stroke="#111827" stroke-width="1.9" stroke-linecap="round" fill="none"/>
-                                        </g>
-                                        <rect x="204" y="220" width="13" height="17" rx="2.5" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                        <circle cx="218" cy="229" r="3.8" fill="#38BDF8" stroke="#111827" stroke-width="1.5"/>
-                                    </g>
-
-                                    <!-- Bulles de dialogue BD -->
-                                    <g class="speech-bubble-1">
-                                        <rect x="144" y="162" width="58" height="22" rx="9" fill="#FFFFFF" stroke="#111827" stroke-width="1.8"/>
-                                        <polygon points="162,184 169,184 164,191" fill="#FFFFFF" stroke="#111827" stroke-width="1.5"/>
-                                        <text x="173" y="176" text-anchor="middle" fill="#111827" font-size="8.5" font-weight="800" font-family="Inter, sans-serif">Cool ! 😎</text>
-                                    </g>
-                                    <g class="speech-bubble-2">
-                                        <rect x="210" y="160" width="54" height="21" rx="9" fill="#ECFDF5" stroke="#111827" stroke-width="1.8"/>
-                                        <polygon points="232,181 239,181 234,188" fill="#ECFDF5" stroke="#111827" stroke-width="1.5"/>
-                                        <text x="237" y="174" text-anchor="middle" fill="#047857" font-size="8.5" font-weight="800" font-family="Inter, sans-serif">Validé ✓</text>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-
-                        <!-- 3. DOMICILE MODERNE (villa d'architecte : zinc, bardage bois & baie vitrée) -->
-                        <g id="home-building">
-                            <!-- Cheminée inox minimaliste -->
-                            <rect x="886" y="102" width="14" height="36" rx="2" fill="#475569" stroke="#1E293B" stroke-width="1.2"/>
-                            <!-- Toiture zinc à joints debout + sous-face bois -->
-                            <polygon points="646,154 798,92 950,154" fill="url(#zincRoofGrad)" stroke="#0F172A" stroke-width="2"/>
-                            <line x1="696" y1="133" x2="900" y2="133" stroke="#64748B" stroke-opacity="0.45" stroke-width="1.2"/>
-                            <line x1="734" y1="118" x2="862" y2="118" stroke="#64748B" stroke-opacity="0.45" stroke-width="1.2"/>
-                            <polygon points="650,154 798,95 946,154 942,158 798,100 654,158" fill="url(#cedarWoodGrad)" opacity="0.85"/>
-
-                            <!-- Corps principal enduit gris architectural + aile bardage bois cèdre -->
-                            <rect x="664" y="154" width="268" height="136" fill="url(#modernSlateGrad)" stroke="#475569" stroke-width="1.6"/>
-                            <rect x="664" y="154" width="212" height="136" fill="url(#facadeLines)"/>
-                            <rect x="876" y="154" width="56" height="136" fill="url(#cedarWoodGrad)" opacity="0.92"/>
-                            <rect x="876" y="154" width="56" height="136" fill="url(#woodPlanks)"/>
-
-                            <!-- Badge MAISON contemporain -->
-                            <rect x="768" y="108" width="60" height="17" rx="8.5" fill="#0B1120" stroke="#10B981" stroke-width="1.2"/>
-                            <text x="798" y="119.5" text-anchor="middle" fill="#A7F3D0" font-size="8.5" font-weight="800" letter-spacing="0.06em" font-family="Plus Jakarta Sans, sans-serif">MAISON</text>
-
-                            <!-- Applique murale extérieure + porte vitrée contemporaine -->
-                            <polygon points="904,205 884,268 924,268" fill="url(#cozyLampGlow)" opacity="0.75"/>
-                            <rect x="898" y="201" width="12" height="5" rx="2" fill="#FDE68A"/>
-                            <rect x="888" y="222" width="32" height="68" rx="3" fill="#0F172A" stroke="#94A3B8" stroke-width="1.4"/>
-                            <rect x="893" y="230" width="9" height="50" rx="1.5" fill="#38BDF8" fill-opacity="0.18"/>
-                            <line x1="912" y1="248" x2="912" y2="266" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round"/>
-
-                            <!-- Jardinière moderne à gauche de l'entrée -->
-                            <rect x="676" y="276" width="54" height="14" rx="2" fill="#78350F" stroke="#1E293B" stroke-width="1.2"/>
-                            <circle cx="688" cy="274" r="6" fill="url(#treeLeafGrad)"/>
-                            <circle cx="702" cy="273" r="7" fill="url(#treeLeafGrad)"/>
-                            <circle cx="716" cy="274" r="6" fill="url(#treeLeafGrad)"/>
-
-                            <!-- Grande baie vitrée panoramique aluminium noir -->
-                            <rect class="home-living-bg" x="678" y="168" width="194" height="106" rx="5" fill="#0B1120" stroke="#475569" stroke-width="1.8"/>
-                            <polygon points="678,168 724,168 690,274 678,274" fill="#FFFFFF" fill-opacity="0.045"/>
-
-                            <!-- === SOUS-SCÈNE T1 MAISON NUIT : Monsieur Débordé continue à trier ses mails à 23h30 === -->
-                            <g class="sub-t1-homework">
-                                <text x="734" y="185" text-anchor="middle" fill="#94A3B8" font-size="8.5" font-weight="700" font-family="Inter, sans-serif">23h30 • Tri e-mails...</text>
-                                <rect x="696" y="246" width="144" height="7" rx="3" fill="#D97706" stroke="#111827" stroke-width="1.6"/>
-                                <rect x="710" y="208" width="44" height="32" rx="4" fill="#0F172A" stroke="#111827" stroke-width="2"/>
-                                <rect x="727" y="240" width="10" height="6" fill="#64748B" stroke="#111827" stroke-width="1.2"/>
-                                <line x1="716" y1="218" x2="746" y2="218" stroke="#EF4444" stroke-width="2.2" stroke-linecap="round"/>
-                                <line x1="716" y1="225" x2="740" y2="225" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Monsieur Débordé à la maison -->
-                                <g transform="translate(792 246) scale(1.22) translate(-792 -246)">
-                                    <g class="bd-char-busy">
-                                        <g class="char-busy-head">
-                                            <ellipse cx="792" cy="218" rx="20" ry="25" fill="url(#mmOrangeGrad)" stroke="#111827" stroke-width="2.2"/>
-                                            <line x1="781" y1="204" x2="787" y2="207" stroke="#111827" stroke-width="1.8" stroke-linecap="round"/>
-                                            <line x1="791" y1="207" x2="797" y2="204" stroke="#111827" stroke-width="1.8" stroke-linecap="round"/>
-                                            <ellipse cx="784" cy="211" rx="3" ry="3.8" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                            <circle cx="783.5" cy="211.5" r="1.4" fill="#111827"/>
-                                            <ellipse cx="794" cy="211" rx="3" ry="3.8" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                            <circle cx="793.5" cy="211.5" r="1.4" fill="#111827"/>
-                                            <circle cx="784" cy="211" r="4.5" fill="none" stroke="#1E293B" stroke-width="1.2"/>
-                                            <circle cx="794" cy="211" r="4.5" fill="none" stroke="#1E293B" stroke-width="1.2"/>
-                                            <path d="M783 220q3-2.5 6 0t6 0" stroke="#111827" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                                        </g>
-                                        <g class="arm-type-l">
-                                            <path d="M782 228l-14 10-8 2" stroke="#111827" stroke-width="5" stroke-linecap="round" fill="none"/>
-                                            <path d="M782 228l-14 10-8 2" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                            <circle cx="759" cy="240" r="3.6" fill="url(#mmOrangeGrad)" stroke="#111827" stroke-width="1.4"/>
-                                        </g>
-                                    </g>
-                                </g>
-                                <!-- Mails rouges qui continuent à la maison -->
-                                <g class="mail-drop-home">
-                                    <rect x="822" y="200" width="30" height="16" rx="3" fill="#EF4444" stroke="#111827" stroke-width="1.6"/>
-                                    <path d="M822 200l15 8 15-8" stroke="#FEE2E2" stroke-width="1.3" fill="none"/>
-                                    <rect x="824" y="220" width="30" height="16" rx="3" fill="#F87171" stroke="#111827" stroke-width="1.6"/>
-                                    <path d="M824 220l15 8 15-8" stroke="#FEE2E2" stroke-width="1.3" fill="none"/>
-                                </g>
-                            </g>
-
-                            <!-- === SOUS-SCÈNE T2 MAISON FAMILLE : Monsieur NUMETIC, Madame Sourire & Petit Soleil === -->
-                            <g class="sub-t2-family">
-                                <rect x="679" y="169" width="192" height="104" rx="4" fill="#F59E0B" fill-opacity="0.18"/>
-                                <!-- Tapis coloré, plante verte & cadre photo -->
-                                <ellipse cx="775" cy="269" rx="68" ry="4" fill="#F59E0B" fill-opacity="0.35"/>
-                                <rect x="694" y="178" width="22" height="16" rx="2" fill="#FDE68A" fill-opacity="0.45" stroke="#111827" stroke-width="1.4"/>
-                                <rect x="844" y="250" width="14" height="20" rx="3" fill="#B45309" stroke="#111827" stroke-width="1.4"/>
-                                <path d="M851 250c-5-8-9-12-8-17 4 2 8 7 8 17ZM851 250c5-9 10-12 9-17-4 2-8 7-9 17Z" fill="#22C55E" stroke="#111827" stroke-width="1.2"/>
-                                <path class="family-heart" d="M775 184c-3-4-9-3-9 2 0 4 9 10 9 10s9-6 9-10c0-5-6-6-9-2Z" fill="#F43F5E" stroke="#111827" stroke-width="1.2"/>
-
-                                <g transform="translate(775 270) scale(1.24) translate(-775 -270)">
-                                    <!-- Ombres au sol -->
-                                    <ellipse cx="727" cy="269" rx="14" ry="2.6" fill="#0F172A" fill-opacity="0.28"/>
-                                    <ellipse cx="769" cy="269" rx="11" ry="2.2" fill="#0F172A" fill-opacity="0.28"/>
-                                    <ellipse cx="813" cy="269" rx="14" ry="2.6" fill="#0F172A" fill-opacity="0.28"/>
-
-                                    <!-- Monsieur NUMETIC (corps rond émeraude + chapeau) -->
-                                    <path d="M722 252v14M732 252v14" stroke="#111827" stroke-width="4" stroke-linecap="round"/>
-                                    <ellipse cx="720" cy="268" rx="5.5" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                    <ellipse cx="734" cy="268" rx="5.5" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                    <ellipse cx="727" cy="233" rx="18" ry="21" fill="url(#mmGreenGrad)" stroke="#111827" stroke-width="2.2"/>
-                                    <ellipse cx="727" cy="211" rx="10" ry="2.4" fill="#0F172A"/>
-                                    <path d="M721 211c0-6 12-6 12 0Z" fill="#1E293B" stroke="#111827" stroke-width="1.4"/>
-                                    <ellipse cx="723" cy="224" rx="2.6" ry="3.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                    <circle cx="723.5" cy="224.2" r="1.3" fill="#111827"/>
-                                    <ellipse cx="731" cy="224" rx="2.6" ry="3.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                    <circle cx="731.5" cy="224.2" r="1.3" fill="#111827"/>
-                                    <circle cx="723" cy="224" r="4" fill="none" stroke="#1E293B" stroke-width="1.1"/>
-                                    <circle cx="731" cy="224" r="4" fill="none" stroke="#1E293B" stroke-width="1.1"/>
-                                    <path d="M722 233q5 5 10 0" stroke="#111827" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-
-                                    <!-- Petit Soleil (corps rond jaune soleil qui saute de joie) -->
-                                    <g class="child-bounce">
-                                        <path d="M765 256v10M773 256v10" stroke="#111827" stroke-width="3.5" stroke-linecap="round"/>
-                                        <ellipse cx="764" cy="267" rx="4.5" ry="2.4" fill="#EF4444" stroke="#111827" stroke-width="1.4"/>
-                                        <ellipse cx="774" cy="267" rx="4.5" ry="2.4" fill="#EF4444" stroke="#111827" stroke-width="1.4"/>
-                                        <circle cx="769" cy="243" r="14" fill="url(#mmYellowGrad)" stroke="#111827" stroke-width="2"/>
-                                        <path d="M757 240l-9-10M781 240l9-10" stroke="#111827" stroke-width="4" stroke-linecap="round"/>
-                                        <path d="M757 240l-9-10M781 240l9-10" stroke="#FACC15" stroke-width="2" stroke-linecap="round"/>
-                                        <ellipse cx="765" cy="239" rx="2.2" ry="2.8" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
-                                        <circle cx="765" cy="239.2" r="1.1" fill="#111827"/>
-                                        <ellipse cx="773" cy="239" rx="2.2" ry="2.8" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
-                                        <circle cx="773" cy="239.2" r="1.1" fill="#111827"/>
-                                        <path d="M765 246q4 4 8 0" stroke="#111827" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                                    </g>
-
-                                    <!-- Madame Sourire (corps rose corail + noeud rouge dans les cheveux) -->
-                                    <path d="M808 252v14M818 252v14" stroke="#111827" stroke-width="4" stroke-linecap="round"/>
-                                    <ellipse cx="806" cy="268" rx="5.5" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                    <ellipse cx="820" cy="268" rx="5.5" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                    <ellipse cx="813" cy="233" rx="18" ry="21" fill="url(#mmPinkGrad)" stroke="#111827" stroke-width="2.2"/>
-                                    <!-- Petit nœud papillon/ruban rouge -->
-                                    <polygon points="807,208 813,212 807,215" fill="#FACC15" stroke="#111827" stroke-width="1.3"/>
-                                    <polygon points="819,208 813,212 819,215" fill="#FACC15" stroke="#111827" stroke-width="1.3"/>
-                                    <ellipse cx="809" cy="224" rx="2.6" ry="3.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                    <circle cx="808.5" cy="224.2" r="1.3" fill="#111827"/>
-                                    <ellipse cx="817" cy="224" rx="2.6" ry="3.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                    <circle cx="816.5" cy="224.2" r="1.3" fill="#111827"/>
-                                    <ellipse cx="804" cy="229" rx="2.2" ry="1.4" fill="#F43F5E" fill-opacity="0.45"/>
-                                    <ellipse cx="822" cy="229" rx="2.2" ry="1.4" fill="#F43F5E" fill-opacity="0.45"/>
-                                    <path d="M808 233q5 5 10 0" stroke="#111827" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                                </g>
-                            </g>
-
-                            <!-- === SOUS-SCÈNE T2 MAISON SOFA : Monsieur NUMETIC se pose dans son canapé === -->
-                            <g class="sub-t2-sofa">
-                                <polygon points="702,196 678,274 736,274" fill="url(#cozyLampGlow)"/>
-                                <line x1="702" y1="200" x2="702" y2="270" stroke="#111827" stroke-width="2.2"/>
-                                <path d="M692 200h20l-4-12h-12Z" fill="#FDE68A" stroke="#111827" stroke-width="1.6"/>
-
-                                <g transform="translate(790 268) scale(1.18) translate(-790 -268)">
-                                    <!-- Canapé confortable avec coussins -->
-                                    <rect x="734" y="234" width="118" height="34" rx="8" fill="#0F766E" stroke="#111827" stroke-width="2"/>
-                                    <rect x="728" y="246" width="14" height="22" rx="4" fill="#115E59" stroke="#111827" stroke-width="1.8"/>
-                                    <rect x="842" y="246" width="14" height="22" rx="4" fill="#115E59" stroke="#111827" stroke-width="1.8"/>
-                                    <rect x="744" y="250" width="96" height="14" rx="4" fill="#14B8A6" stroke="#111827" stroke-width="1.4"/>
-                                    <rect x="746" y="238" width="16" height="14" rx="4" fill="#F59E0B" stroke="#111827" stroke-width="1.5"/>
-
-                                    <!-- Monsieur NUMETIC détendu sur le canapé avec jambes allongées & tasse -->
-                                    <g class="sofa-relax">
-                                        <path d="M792 248h24l7 9" stroke="#111827" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                        <ellipse cx="826" cy="259" rx="5.5" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                        <ellipse cx="786" cy="227" rx="19" ry="21" fill="url(#mmGreenGrad)" stroke="#111827" stroke-width="2.2"/>
-                                        <ellipse cx="782" cy="219" rx="2.6" ry="3.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                        <circle cx="782" cy="219.2" r="1.3" fill="#111827"/>
-                                        <ellipse cx="790" cy="219" rx="2.6" ry="3.4" fill="#FFFFFF" stroke="#111827" stroke-width="1.3"/>
-                                        <circle cx="790" cy="219.2" r="1.3" fill="#111827"/>
-                                        <circle cx="782" cy="219" r="4" fill="none" stroke="#1E293B" stroke-width="1.1"/>
-                                        <circle cx="790" cy="219" r="4" fill="none" stroke="#1E293B" stroke-width="1.1"/>
-                                        <path d="M781 228q5 5 10 0" stroke="#111827" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                                        <rect x="807" y="232" width="10" height="11" rx="2" fill="#F8FAFC" stroke="#111827" stroke-width="1.5"/>
-                                        <path class="steam-wisp" d="M812 229c-2-3 2-5 0-8" stroke="#FDE68A" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                                    </g>
-                                </g>
-                                <text x="790" y="186" text-anchor="middle" fill="#FDE68A" font-size="8.5" font-weight="800" font-family="Inter, sans-serif">Soirée détente 🛋️</text>
-                            </g>
-                        </g>
-
-                        <!-- 4. MARCHEUR STYLE MONSIEUR MADAME (Trajet Entreprise -> Maison) -->
-                        <g id="bd-walker" opacity="0" transform="translate(290 0)">
-                            <g transform="translate(0 290) scale(1.42) translate(0 -290)">
-                                <ellipse cx="0" cy="289" rx="18" ry="3.5" fill="#020617" fill-opacity="0.45"/>
-                                <!-- Version T1 : Monsieur Débordé (orange) fatigué sous la nuit -->
-                                <g class="walker-outfit-t1 walker-bob">
-                                    <g class="leg-l">
-                                        <line x1="-4" y1="264" x2="-8" y2="287" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <ellipse cx="-6" cy="288" rx="6" ry="3" fill="#475569" stroke="#111827" stroke-width="1.6"/>
-                                    </g>
-                                    <g class="leg-r">
-                                        <line x1="4" y1="264" x2="8" y2="287" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <ellipse cx="10" cy="288" rx="6" ry="3" fill="#475569" stroke="#111827" stroke-width="1.6"/>
-                                    </g>
-                                    <rect x="-18" y="250" width="13" height="10" rx="2.5" fill="#92400E" stroke="#111827" stroke-width="1.6"/>
-                                    <ellipse cx="0" cy="244" rx="18" ry="22" fill="url(#mmOrangeGrad)" stroke="#111827" stroke-width="2.2"/>
-                                    <ellipse cx="-3" cy="236" rx="2.4" ry="3.2" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
-                                    <circle cx="-2.5" cy="236.2" r="1.2" fill="#111827"/>
-                                    <ellipse cx="5" cy="236" rx="2.4" ry="3.2" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
-                                    <circle cx="5.5" cy="236.2" r="1.2" fill="#111827"/>
-                                    <path d="M-4 245q4-2 8 0" stroke="#111827" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                                    <g class="arm-walk-r">
-                                        <line x1="4" y1="248" x2="10" y2="262" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <circle cx="10" cy="263" r="3.4" fill="url(#mmOrangeGrad)" stroke="#111827" stroke-width="1.4"/>
-                                    </g>
-                                </g>
-                                <!-- Version T2 : Monsieur NUMETIC (émeraude, chapeau melon, notes de musique) en plein jour -->
-                                <g class="walker-outfit-t2 walker-bob">
-                                    <g class="leg-l">
-                                        <line x1="-4" y1="264" x2="-9" y2="287" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <ellipse cx="-7" cy="288" rx="6" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                    </g>
-                                    <g class="leg-r">
-                                        <line x1="4" y1="264" x2="9" y2="287" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <ellipse cx="11" cy="288" rx="6" ry="3" fill="#F8FAFC" stroke="#111827" stroke-width="1.6"/>
-                                    </g>
-                                    <ellipse cx="0" cy="244" rx="18" ry="22" fill="url(#mmGreenGrad)" stroke="#111827" stroke-width="2.2"/>
-                                    <ellipse cx="0" cy="221" rx="10" ry="2.2" fill="#0F172A"/>
-                                    <path d="M-6 221c0-6 12-6 12 0Z" fill="#1E293B" stroke="#111827" stroke-width="1.4"/>
-                                    <ellipse cx="-2" cy="235" rx="2.4" ry="3.2" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
-                                    <circle cx="-1.5" cy="235.2" r="1.2" fill="#111827"/>
-                                    <ellipse cx="6" cy="235" rx="2.4" ry="3.2" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
-                                    <circle cx="6.5" cy="235.2" r="1.2" fill="#111827"/>
-                                    <path d="M-3 244q5 4 10 0" stroke="#111827" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                                    <text x="-26" y="218" fill="#FEF08A" font-size="13" font-weight="900">♪</text>
-                                    <g class="arm-walk-r">
-                                        <line x1="4" y1="248" x2="12" y2="260" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-                                        <circle cx="12" cy="261" r="3.4" fill="url(#mmGreenGrad)" stroke="#111827" stroke-width="1.4"/>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
+                    <div class="magritte-canvas-wrap">
+                        <canvas id="magritte-canvas" class="cinema-svg" width="2048" height="672" role="img" aria-label="Tableau peint à l'huile animé dans le style de René Magritte : un jour sans IA puis le lendemain avec NUMETIC"></canvas>
+                    </div>
 
                     <div class="cinema-footer">
                         <div class="metric-strip cinema-metrics">
-                            <div><strong id="cinema-metric-hours">+6h</strong><span>gagnées / semaine</span></div>
-                            <div><strong>0 ligne</strong><span>de code complexe</span></div>
+                            <div><strong id="cinema-metric-hours">0h</strong><span>gagnées / semaine</span></div>
+                            <div><strong id="cinema-metric-code">0</strong><span>lignes de code complexe</span></div>
                             <div><strong>24/7</strong><span>flux continu jour &amp; nuit</span></div>
                         </div>
                     </div>
@@ -934,6 +377,6 @@
         </div>
     </footer>
 
-    <script src="app.js?v=20261115f"></script>
+    <script src="app.js?v=20261116ai"></script>
 </body>
 </html>

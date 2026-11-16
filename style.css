@@ -85,8 +85,8 @@ img {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 22%, rgba(254, 240, 138, 0.24) 0%, transparent 52%),
-        linear-gradient(180deg, rgba(29, 78, 216, 0.58) 0%, rgba(56, 189, 248, 0.34) 48%, rgba(15, 23, 42, 0.08) 100%);
+        radial-gradient(circle at 50% 22%, rgba(147, 197, 253, 0.14) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.08) 100%);
     opacity: var(--sky-day);
     will-change: opacity;
 }
@@ -96,8 +96,8 @@ img {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 25%, rgba(251, 146, 60, 0.24) 0%, transparent 55%),
-        linear-gradient(180deg, rgba(76, 29, 149, 0.52) 0%, rgba(234, 88, 12, 0.26) 55%, rgba(15, 23, 42, 0.14) 100%);
+        radial-gradient(circle at 50% 25%, rgba(56, 189, 248, 0.10) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.14) 100%);
     opacity: var(--sky-dusk);
     will-change: opacity;
 }
@@ -363,7 +363,16 @@ img {
 .hero-section {
     position: relative;
     z-index: 2;
-    padding: 58px 0 36px;
+    padding: 36px 0 28px;
+}
+
+.magritte-sky-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .hero-copy-centered {
@@ -383,7 +392,8 @@ img {
 
 .hero-subtitle {
     font-size: clamp(0.92rem, 1.15vw, 1.02rem);
-    color: var(--text-muted);
+    color: rgba(241, 245, 249, 0.92);
+    text-shadow: 0 2px 14px rgba(5, 10, 24, 0.55);
     max-width: 580px;
     margin: 0 auto 22px;
 }
@@ -406,8 +416,9 @@ img {
 
 .cinema-stage {
     position: relative;
-    max-width: 1080px;
-    margin: 22px auto 0;
+    max-width: 1180px;
+    margin: 28px auto 0;
+    padding-top: 52px;
     overflow: visible;
     background: transparent;
     border: none;
@@ -456,13 +467,16 @@ img {
     transition: width 0.3s linear;
 }
 
+.magritte-canvas-wrap {
+    width: 100%;
+    position: relative;
+}
+
 .cinema-svg {
     width: 100%;
     height: auto;
+    aspect-ratio: 1024 / 336;
     display: block;
-    /* Fondu doux latéral pour la route et les collines sans aucun cadre */
-    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
 }
 
 .cinema-footer {
@@ -502,24 +516,28 @@ img {
     box-shadow: 0 0 18px rgba(16, 185, 129, 0.28);
 }
 
-/* Visibilité des sous-scènes pilotées par app.js */
+/* Visibilité des sous-scènes & jeu du chapeau sur les porte-manteaux */
 .sub-t1-office,
 .sub-t2-office,
 .sub-t1-homework,
-.sub-t2-family,
-.sub-t2-sofa,
+.sub-t2-read,
 .walker-outfit-t1,
-.walker-outfit-t2 {
+.walker-outfit-t2,
+.office-rack-hat,
+.home-rack-hat {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.38s ease;
+    transition: opacity 0.35s ease;
 }
 
 .cinema-stage.stage-t1-office .sub-t1-office,
+.cinema-stage.stage-t1-office .office-rack-hat,
 .cinema-stage.stage-t2-office .sub-t2-office,
+.cinema-stage.stage-t2-office .office-rack-hat,
 .cinema-stage.stage-t1-homework .sub-t1-homework,
-.cinema-stage.stage-t2-family .sub-t2-family,
-.cinema-stage.stage-t2-sofa .sub-t2-sofa,
+.cinema-stage.stage-t1-homework .home-rack-hat,
+.cinema-stage.stage-t2-read .sub-t2-read,
+.cinema-stage.stage-t2-read .home-rack-hat,
 .cinema-stage.stage-t1-commute .walker-outfit-t1,
 .cinema-stage.stage-t2-commute .walker-outfit-t2 {
     opacity: 1;
@@ -541,13 +559,100 @@ img {
     transform-box: view-box;
 }
 
-/* Animations BD vivantes et fluides */
+/* Inscriptions poétiques grand format façon "Ceci n'est pas une pipe" (écriture écolier belge Magritte en blanc pur) */
+.magritte-keywords-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.mk-word {
+    position: absolute;
+    font-family: 'Playwrite BE WAL', 'Dancing Script', cursive;
+    font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.32;
+    color: #FFFFFF;
+    text-shadow:
+        0 3px 16px rgba(2, 6, 23, 0.92),
+        0 1px 4px rgba(2, 6, 23, 0.95);
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mk-word-eco {
+    color: #FFFFFF;
+}
+
+.mk-pos-left {
+    top: 4px;
+    left: 2.5%;
+    text-align: left;
+    max-width: 520px;
+}
+
+.mk-pos-right {
+    top: 4px;
+    right: 2.5%;
+    text-align: right;
+    max-width: 540px;
+}
+
+.mk-word.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Signature centrale "Avec" + Logo officiel Numetic. en très grand au milieu (SANS bulle) */
+.mk-center-hero {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translate(-50%, 10px) scale(0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mk-center-hero.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+}
+
+.mk-center-heading {
+    font-family: 'Playwrite BE WAL', 'Dancing Script', cursive;
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    font-weight: 400;
+    color: #FFFFFF;
+    text-shadow:
+        0 3px 16px rgba(2, 6, 23, 0.92),
+        0 1px 4px rgba(2, 6, 23, 0.95);
+    line-height: 1.15;
+}
+
+.mk-center-logo-lg {
+    height: clamp(68px, 10vw, 114px);
+    width: auto;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 4px 18px rgba(2, 6, 23, 0.96))
+        drop-shadow(0 0 28px rgba(15, 23, 42, 0.88))
+        drop-shadow(0 0 32px rgba(59, 130, 246, 0.55));
+}
+
+/* Marche posée et naturelle façon René Magritte (sans sautillement) */
 .walker-bob {
-    animation: walkBob 0.42s ease-in-out infinite alternate;
+    animation: walkBob 0.82s ease-in-out infinite alternate;
 }
 @keyframes walkBob {
     0%   { transform: translateY(0); }
-    100% { transform: translateY(-2.5px); }
+    100% { transform: translateY(-0.5px); }
 }
 
 .clock-hand-fast {
@@ -674,21 +779,21 @@ img {
 }
 
 .leg-l {
-    transform-origin: 0 264px;
-    animation: legSwing 0.42s ease-in-out infinite alternate;
+    transform-origin: 0 276px;
+    animation: legSwing 0.82s ease-in-out infinite alternate;
 }
 .leg-r {
-    transform-origin: 0 264px;
-    animation: legSwing 0.45s ease-in-out infinite alternate-reverse;
+    transform-origin: 0 276px;
+    animation: legSwing 0.82s ease-in-out infinite alternate-reverse;
 }
 @keyframes legSwing {
-    0%   { transform: rotate(-18deg); }
-    100% { transform: rotate(18deg); }
+    0%   { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
 }
 
 .arm-walk-r {
-    transform-origin: 2px 246px;
-    animation: legSwing 0.45s ease-in-out infinite alternate-reverse;
+    transform-origin: 4px 236px;
+    animation: legSwing 0.82s ease-in-out infinite alternate-reverse;
 }
 
 .char-busy-head {
@@ -1831,6 +1936,46 @@ img {
         flex: 1;
         padding: 10px 12px;
         font-size: 0.85rem;
+    }
+
+    .cinema-stage {
+        margin: 22px -18px 0;
+        padding-top: 82px;
+        overflow: hidden;
+    }
+
+    .cinema-svg {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+    }
+
+    .mk-word {
+        font-size: 1.05rem;
+        max-width: 260px;
+    }
+
+    .mk-center-heading {
+        font-size: 1.25rem;
+    }
+
+    .mk-center-logo-lg {
+        height: 48px;
+    }
+
+    .cinema-metrics {
+        gap: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cinema-stage {
+        margin: 24px auto 0;
+        padding-top: 72px;
+    }
+
+    .mk-center-logo-lg {
+        height: 74px;
     }
 }
 
