@@ -29,23 +29,23 @@ const parcoursModes = {
     pme: {
         tag: "Parcours Entreprise • Clé en main",
         title: "Supprimez les saisies manuelles et gagnez des heures chaque semaine.",
-        desc: "Nous connectons vos outils existants (boîte mail, devis, facturation, CRM) grâce au No-Code pour éliminer les tâches répétitives sans perturber votre organisation.",
-        cta: "Demander mon audit PME gratuit",
+        desc: "Nous connectons vos outils du quotidien (boîte mail, devis, facturation, suivi client) pour éliminer les tâches répétitives sans perturber votre façon de travailler.",
+        cta: "Demander mon bilan gratuit",
         items: [
-            "<strong>1. Diagnostic 30 min :</strong> repérage des tâches les plus chronophages.",
-            "<strong>2. Déploiement No-Code :</strong> automatisations visuelles fiables et documentées.",
-            "<strong>3. Sobriété énergétique :</strong> choix de modèles IA légers et économiques."
+            "<strong>1. Échange de 30 min :</strong> repérage des tâches qui vous font perdre le plus de temps.",
+            "<strong>2. Mise en place simple :</strong> des automatisations visuelles fiables et expliquées.",
+            "<strong>3. Approche responsable :</strong> choix d'outils IA légers, économiques et durables."
         ]
     },
     formation: {
-        tag: "Parcours Équipes • Pédagogie pratique",
-        title: "Rendez vos collaborateurs autonomes sur l'IA générative utile.",
-        desc: "Des ateliers concrets adaptés à votre secteur (prompting, LLM, synthèse, création de contenu) animés par un formateur agréé, technopédagogue et chercheur en numérique et IA.",
+        tag: "Parcours Équipes • Pratique & concret",
+        title: "Rendez vos collaborateurs autonomes sur l'IA au quotidien.",
+        desc: "Des ateliers concrets adaptés à votre secteur (bien formuler ses demandes, résumer des documents, rédiger plus vite) animés par un formateur agréé, spécialiste en pédagogie numérique et chercheur en IA.",
         cta: "Planifier une formation sur-mesure",
         items: [
-            "<strong>1. Programme adapté :</strong> cas d'usage réels issus de votre métier.",
-            "<strong>2. Zéro prérequis technique :</strong> approche claire et progressive.",
-            "<strong>3. Cadre éthique &amp; sobre :</strong> confidentialité des données et bonnes pratiques."
+            "<strong>1. Programme adapté :</strong> exercices pratiques basés sur votre vrai métier.",
+            "<strong>2. Aucun niveau technique requis :</strong> approche claire, humaine et progressive.",
+            "<strong>3. Cadre sûr et responsable :</strong> protection de vos données et bonnes pratiques."
         ]
     }
 };
@@ -123,7 +123,7 @@ if (contactForm && feedbackBox) {
 
         const submitBtn = document.getElementById('contact-submit');
         submitBtn.disabled = true;
-        feedbackBox.textContent = "Envoi de votre demande d'audit en cours...";
+        feedbackBox.textContent = "Envoi de votre demande en cours...";
 
         try {
             const res = await fetch("https://formsubmit.co/ajax/numetic.liege@gmail.com", {
@@ -138,7 +138,7 @@ if (contactForm && feedbackBox) {
                 })
             });
             if (!res.ok) throw new Error("HTTP " + res.status);
-            feedbackBox.textContent = "Merci ! Votre demande d'audit a bien été transmise à Jérôme. Réponse rapide sous 24h ouvrables.";
+            feedbackBox.textContent = "Merci ! Votre demande a bien été transmise à Jérôme. Réponse rapide sous 24h ouvrables.";
             contactForm.reset();
         } catch {
             const subject = encodeURIComponent(`[NUMETIC] ${goal} — ${name}`);
