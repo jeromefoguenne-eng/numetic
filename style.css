@@ -1377,6 +1377,71 @@ img {
     font-size: 0.94rem;
 }
 
+/* Bandeau Confiance / Logos Clients */
+.trust-section {
+    position: relative;
+    z-index: 2;
+    padding: 18px 0 8px;
+}
+
+.trust-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 26px 28px;
+    border-radius: var(--radius-xl);
+    background: rgba(15, 23, 42, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 16px 40px rgba(5, 10, 24, 0.24);
+    text-align: center;
+}
+
+.trust-label {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.trust-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+}
+
+.trust-logo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 28px;
+    height: 92px;
+    min-width: 210px;
+    box-shadow: 0 10px 26px rgba(5, 10, 24, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-logo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(5, 10, 24, 0.32);
+}
+
+.trust-logo-card img {
+    display: block;
+    max-height: 60px;
+    max-width: 180px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .glass-panel {
     background: var(--bg-glass);
     backdrop-filter: blur(22px);
